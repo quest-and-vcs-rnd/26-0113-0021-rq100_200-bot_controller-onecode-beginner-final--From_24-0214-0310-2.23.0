@@ -1050,6 +1050,26 @@ setup_BotAndController_Func()
         network_GroupChannel_MyBotAndController_Base0_Int
         )
     }
+    if (true) {
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "Startup Debug Display: Show on right-half of OLED to prove debugger started"
+        )
+        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        "DEBUG READY",
+        64,
+        0
+        )
+        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        "Ch:" + network_GroupChannel_MyBotAndController_Base0_Int,
+        64,
+        1
+        )
+        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        "Waiting...",
+        64,
+        2
+        )
+    }
     if (false) {
         quest_Note_4.quest_Show_String_For_Note_Small_Func(
         "AAA-1: Next Block_Code Moddable..."
