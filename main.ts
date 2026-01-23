@@ -768,9 +768,14 @@ radio.onReceivedString(function (receivedString) {
         quest_Note_3.quest_Show_String_For_Note_Big_Func(
         "Network_Message Received' Dual Usage:: Usage #1: Operate Bot from Controller_Joystick"
         )
+        
+        // Check for config commands always for either Bot or Controller_Joystick, even before network-pariring to change Group_Channel_Num    
+        config_ParseCommand_Func(receivedString)
+
         // //jwc o if (device_Type_Bot_Bool && _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT) {
         // //jwc o } else if (!(device_Type_Bot_Bool)) {
         if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Bot__ID_INT && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
+            // Normal motor commands
             bot_Servo_Motors_Basic_Fn(receivedString)
             bot_Servo_Motors_Turbo_Fn(receivedString)
             bot_Servo_Arms__Position_Relative__Fn(receivedString)
