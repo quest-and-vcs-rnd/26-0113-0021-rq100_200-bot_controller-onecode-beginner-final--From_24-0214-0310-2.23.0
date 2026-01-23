@@ -819,13 +819,42 @@ if (true) {
 function config_ParseCommand_Func (cmdString: string) {
     // // jwc 26-0122-1330: Phase 2A Step 4 - Command parser for remote configuration
     // // Format: "CFG:paramName=value" or "GET:paramName" or "GET:ALL"
+    
+    // // jwc 26-0123-0000: Debug output on OLED right side
+    serial.writeLine("* BOT RX: " + cmdString)
+    quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        "RX:" + cmdString.substr(0, 10),
+        64,
+        0
+    )
+    
     if (cmdString.substr(0, 4) == "CFG:") {
         // // Parse SET command: "CFG:motorFwd=70"
         paramPart = cmdString.substr(4, cmdString.length - 4)
         equalPos = paramPart.indexOf("=")
+        
+        // // Display parsing info on OLED
+        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+            "Parse:" + paramPart.substr(0, 8),
+            64,
+            1
+        )
+        
         if (equalPos > 0) {
             paramName = paramPart.substr(0, equalPos)
             paramValue = parseFloat(paramPart.substr(equalPos + 1, paramPart.length - equalPos - 1))
+            
+            // // Display param name and value on OLED
+            quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+                "P:" + paramName.substr(0, 8),
+                64,
+                2
+            )
+            quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+                "V:" + paramValue,
+                64,
+                3
+            )
             // // Update config variable based on parameter name
             if (paramName == "groupChanl") {
                 if (paramValue >= 0 && paramValue <= 99) {
