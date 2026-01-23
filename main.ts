@@ -827,10 +827,15 @@ function config_ParseCommand_Func(cmdString: string) {
     
     // // jwc 26-0123-0000: Debug output on OLED right side
     serial.writeLine("* BOT RX: " + cmdString)
+    ////jwc 26-0123-0800 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+    ////jwc 26-0123-0800     "RX:" + cmdString.substr(0, 10),
+    ////jwc 26-0123-0800     64,
+    ////jwc 26-0123-0800     0
+    ////jwc 26-0123-0800 )
     quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
         "RX:" + cmdString.substr(0, 10),
-        64,
-        0
+        0,
+        5
     )
     
     if (cmdString.substr(0, 4) == "CFG:") {
@@ -839,10 +844,15 @@ function config_ParseCommand_Func(cmdString: string) {
         equalPos = paramPart.indexOf("=")
         
         // // Display parsing info on OLED
+        ////jwc 26-0123-0800 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        ////jwc 26-0123-0800     "Parse:" + paramPart.substr(0, 8),
+        ////jwc 26-0123-0800     64,
+        ////jwc 26-0123-0800     1
+        ////jwc 26-0123-0800 )
         quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
             "Parse:" + paramPart.substr(0, 8),
-            64,
-            1
+            0,
+            6
         )
         
         if (equalPos > 0) {
@@ -850,15 +860,20 @@ function config_ParseCommand_Func(cmdString: string) {
             paramValue = parseFloat(paramPart.substr(equalPos + 1, paramPart.length - equalPos - 1))
             
             // // Display param name and value on OLED
+            ////jwc 26-0123-0800 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+            ////jwc 26-0123-0800     "P:" + paramName.substr(0, 8),
+            ////jwc 26-0123-0800     64,
+            ////jwc 26-0123-0800     2
+            ////jwc 26-0123-0800 )
+            ////jwc 26-0123-0800 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+            ////jwc 26-0123-0800     "V:" + paramValue,
+            ////jwc 26-0123-0800     64,
+            ////jwc 26-0123-0800     3
+            ////jwc 26-0123-0800 )
             quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
-                "P:" + paramName.substr(0, 8),
-                64,
-                2
-            )
-            quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
-                "V:" + paramValue,
-                64,
-                3
+                "P:" + paramName.substr(0, 8) + "|V:" + paramValue,
+                0,
+                6
             )
             // // Update config variable based on parameter name
             if (paramName == "groupChanl") {
@@ -1059,20 +1074,40 @@ setup_BotAndController_Func()
         quest_Note_1.quest_Show_String_For_Note_Small_Func(
         "Startup Debug Display: Show on right-half of OLED to prove debugger started"
         )
+        ////jwc 26-0123-0800 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        ////jwc 26-0123-0800 "DEBUG READY",
+        ////jwc 26-0123-0800 64,
+        ////jwc 26-0123-0800 0
+        ////jwc 26-0123-0800 )
+        ////jwc 26-0123-0800 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        ////jwc 26-0123-0800 "Ch:" + network_GroupChannel_MyBotAndController_Base0_Int,
+        ////jwc 26-0123-0800 64,
+        ////jwc 26-0123-0800 1
+        ////jwc 26-0123-0800 )
+        ////jwc 26-0123-0800 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        ////jwc 26-0123-0800 "Waiting...",
+        ////jwc 26-0123-0800 64,
+        ////jwc 26-0123-0800 2
+        ////jwc 26-0123-0800 )
         quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
-        "DEBUG READY",
-        64,
+        "Ch:" + network_GroupChannel_MyBotAndController_Base0_Int + " Ready",
+        0,
         0
         )
         quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
-        "Ch:" + network_GroupChannel_MyBotAndController_Base0_Int,
-        64,
+        "Whl_L:___%|Whl_R:___%",
+        0,
         1
         )
         quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
-        "Waiting...",
-        64,
+        "Arm_L:___|Arm_R:___|Inc:___",
+        0,
         2
+        )
+        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        "Flash:Loaded",
+        0,
+        7
         )
     }
     if (false) {
