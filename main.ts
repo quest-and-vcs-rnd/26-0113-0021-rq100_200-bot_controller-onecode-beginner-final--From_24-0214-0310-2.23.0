@@ -1,17 +1,17 @@
-// // jwc 26-0117-2030 Obsolete function setup_System_Variables__UserCustomizable_Yes__Func () {
+// // jwc 26-0117-2030 Obsolete function setup_System_Variables__UserCustomizable_Yes__Func() {
 // // jwc 26-0117-2030 Obsolete     quest_Note_3.quest_Show_String_For_Note_Big_Func(
 // // jwc 26-0117-2030 Obsolete     "THIS STACK CUSTOMIZABLE_YES"
 // // jwc 26-0117-2030 Obsolete     )
 // // jwc 26-0117-2030 Obsolete }
 // // jwc 24-0214-0310-rq100-onecode-bot_controller-beginner-final.ts
-function screen_PlotNewDot_ClearOldDot_WithHeartbeat_Func (screen_x_new_num: number, screen_y_new_num: number) {
+function screen_PlotNewDot_ClearOldDot_WithHeartbeat_Func(screen_x_new_num: number, screen_y_new_num: number) {
     led.plotBrightness(screen_X_Old_Num, screen_Y_Old_Num, screen_XY_Brightness_Old_Num)
     screen_X_Old_Num = screen_x_new_num
     screen_Y_Old_Num = screen_y_new_num
     screen_XY_Brightness_Old_Num = led.pointBrightness(screen_x_new_num, screen_y_new_num)
     led.plotBrightness(screen_x_new_num, screen_y_new_num, screenBrightness_Heartbeat_Count_Int)
 }
-function settingsOverride_FlashMem_Save_Func () {
+function settingsOverride_FlashMem_Save_Func() {
     if (true) {
         // // jwc 26-0122-1230: Phase 2A - Expanded to save all 10 config settings
         if (false) {
@@ -43,7 +43,7 @@ function settingsOverride_FlashMem_Save_Func () {
         serial.writeLine("* 26-0122-1230: Config saved: Ch=" + config_groupChanl + " MotorFwd=" + config_motorFwd + " FlashPairs=" + flashstorage.size())
     }
 }
-function config_SendAllValues_Func () {
+function config_SendAllValues_Func() {
     // // jwc 26-0122-1400: Phase 2A Step 5 - Send all configuration values via radio
     serial.writeLine("* CFG SEND ALL: Sending all 10 config values")
     // // Send all 10 configuration values as individual radio messages
@@ -59,7 +59,7 @@ function config_SendAllValues_Func () {
     radio.sendString("VAL:servoInc=" + config_servoInc)
     serial.writeLine("* CFG SEND ALL: Complete")
 }
-function setup_System_Variables_2__UserCustomizable_Yes__Func () {
+function setup_System_Variables_2__UserCustomizable_Yes__Func() {
     if (true) {
         quest_Note_3.quest_Show_String_For_Note_Big_Func(
         "THIS STACK CUSTOMIZABLE_YES"
@@ -135,7 +135,7 @@ function setup_System_Variables_2__UserCustomizable_Yes__Func () {
     "Level 2.1: Variables_n_Constants_Yes"
     )
 }
-function screen_Clear_Func () {
+function screen_Clear_Func() {
     for (let index_X = 0; index_X <= 4; index_X++) {
         for (let index_Y = 0; index_Y <= 4; index_Y++) {
             if (led.point(index_X, index_Y)) {
@@ -179,7 +179,7 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
         control.reset()
     }
 })
-function bot_Servo_Motors_Basic_Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+function bot_Servo_Motors_Basic_Fn(network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
     // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded values with config variables
     if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "forward") {
         images.createImage(`
@@ -261,7 +261,7 @@ function bot_Servo_Motors_Basic_Fn (network_ReceivedString_FromControllerJoystic
         )
     }
 }
-function bot_Servo_Motors_Turbo_Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+function bot_Servo_Motors_Turbo_Fn(network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
     // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded turbo values with config variables
     if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "forward_turbo") {
         images.createImage(`
@@ -383,7 +383,7 @@ input.onGesture(Gesture.LogoUp, function () {
         }
     }
 })
-function bot_Servo_Arms__Position_Relative__Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+function bot_Servo_Arms__Position_Relative__Fn(network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
     if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "arm_000__down") {
         images.createImage(`
             . . . . .
@@ -462,7 +462,7 @@ function bot_Servo_Arms__Position_Relative__Fn (network_ReceivedString_FromContr
         }
     }
 }
-function bot_Servo_Arms__Position_Absolute__Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+function bot_Servo_Arms__Position_Absolute__Fn(network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
     if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "arm_000__down") {
         images.createImage(`
             . . . . .
@@ -555,7 +555,7 @@ function bot_Servo_Arms__Position_Absolute__Fn (network_ReceivedString_FromContr
         )
     }
 }
-function settingsOverride_FlashMem_Load_Func () {
+function settingsOverride_FlashMem_Load_Func() {
     // // jwc 26-0122-1230: Phase 2A - Expanded to load all 10 config settings
     serial.writeLine("* 26-0122-1230: Loading config from flash: Pairs=" + flashstorage.size())
     // // jwc 26-0122-1230: Load all 10 configuration settings from flash (with defaults)
@@ -675,7 +675,7 @@ input.onButtonPressed(Button.AB, function () {
 // let motor_Power_Gear_01_MAX = 0
 // 
 // let device_Type_Controller_Bool = 0
-function setup_System_Variables_1__UserCustomizable_Not__Func () {
+function setup_System_Variables_1__UserCustomizable_Not__Func() {
     if (true) {
         quest_Note_3.quest_Show_String_For_Note_Big_Func(
         "THIS STACK CUSTOMIZABLE_NOT"
@@ -821,7 +821,7 @@ if (true) {
         }
     }
 })
-function config_ParseCommand_Func (cmdString: string) {
+function config_ParseCommand_Func(cmdString: string) {
     // // jwc 26-0122-1330: Phase 2A Step 4 - Command parser for remote configuration
     // // Format: "CFG:paramName=value" or "GET:paramName" or "GET:ALL"
     
@@ -981,7 +981,7 @@ input.onButtonPressed(Button.B, function () {
         )
     }
 })
-function config_SendSingleValue_Func (paramName: string) {
+function config_SendSingleValue_Func(paramName: string) {
     // // jwc 26-0122-1400: Phase 2A Step 5 - Send single configuration value via radio
     if (paramName == "groupChanl") {
         radio.sendString("VAL:groupChanl=" + config_groupChanl)
@@ -1018,7 +1018,7 @@ function config_SendSingleValue_Func (paramName: string) {
         serial.writeLine("* CFG SEND ERR: Unknown param: " + paramName)
     }
 }
-function botModeInIdle_Fn () {
+function botModeInIdle_Fn() {
     quest_Note_5.quest_Show_String_For_Note_Small_Func(
     "/\\ 'joystickbit.initJoystickBit()' Prevents Button-Pressed = False_+"
     )
@@ -1042,7 +1042,7 @@ function botModeInIdle_Fn () {
     }
     return false
 }
-function setup_Code_For_System_Func () {
+function setup_Code_For_System_Func() {
     if (true) {
         setup_System_Variables_1__UserCustomizable_Not__Func()
         setup_System_Variables_2__UserCustomizable_Yes__Func()
