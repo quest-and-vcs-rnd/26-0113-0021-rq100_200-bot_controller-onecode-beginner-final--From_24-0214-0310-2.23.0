@@ -1,0 +1,37 @@
+{
+    "name": "robot100_200-RemoteControl-Beginner (v0.1.0: 26-0113-0020)",
+    "version": "0.5.1",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*",
+        "joystickbit": "github:tinkertanker/pxt-joystickbit#v1.0.2",
+        "microbit-pxt-rotate": "github:bsiever/microbit-pxt-rotate#v0.1.6",
+        "25-0805-1750-Makecode_microbit-Comments-Extension": "github:jasonc1025-333/25-0805-1750-makecode_microbit-comments-extension#v0.0.2",
+        "23-1006-1820-RQ100-QuestCustomBlocks-Wukong-Oled (v0.35.3, 26-0119-0530)": "github:jasonc1025-333/23-1006-1820-rq100-questcustomblocks-wukong-oled#v0.35.3",
+        "microbit-pxt-flashstorage": "github:bsiever/microbit-pxt-flashstorage#v0.1.4"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "main_backend.ts",
+        "main.py"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "branch": "v6.0.19",
+        "tag": "v6.0.19",
+        "commits": "https://github.com/microsoft/pxt-microbit/commits/19507cc84a19f2a882b2fbe58b4ae3a5cb79cbf9",
+        "target": "8.0.18",
+        "pxt": "9.0.12",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}
