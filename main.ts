@@ -59,331 +59,13 @@ function config_SendAllValues_Func () {
     radio.sendString("VAL:servoInc=" + config_servo_Inc)
     serial.writeLine("* CFG SEND ALL: Complete")
 }
-function setup_System_Variables_2__UserCustomizable_Yes__Func () {
-    if (true) {
-        quest_Note_3.quest_Show_String_For_Note_Big_Func(
-        "THIS STACK CUSTOMIZABLE_YES"
-        )
-        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-        "Variable & Constant: Settings"
-        )
-        if (true) {
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "Following Gears are not used in Level_1 but need these null declarations... "
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "...to allow Level_2 code to compile (though unused in Level_1)"
-            )
-            // jwc needed to fix compiler issue
-            motor_Power_Gear_01_MAX = 0
-            // jwc needed to fix compiler issue
-            motor_Power_Gear_02_MAX = 0
-        }
-        if (true) {
-            wuKong.mecanumWheel(
-            wuKong.ServoList.S1,
-            wuKong.ServoList.S3,
-            wuKong.ServoList.S0,
-            wuKong.ServoList.S2
-            )
-        }
-        if (false) {
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "GeekServo: For servo_360: start at 180"
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "Start w/ Label 'GeekServo' facing out for Servo_Arm_Left, for 180-degrees to face forward for optimum range"
-            )
-            servoArm_Now_Degrees_Int = 180
-            wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Now_Degrees_Int)
-            wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Now_Degrees_Int)
-            if (false) {
-                quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                "Obsolete?"
-                )
-                servoArm_DOWN_MAX_DEGREES_INT = 0
-                servoArm_UP_MAX_DEGREES_INT = 90
-                servoArm_Left_UP_DEGREES_INT = 20
-                servoArm_Right_UP_DEGREES_INT = 45
-                servoArm_Left_Up_Bool = true
-                servoArm_Right_Up_Bool = true
-            }
-        }
-        if (true) {
-            // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded servo settings with config variables
-            servoArm_Increment_Degrees_Int = config_servo_Inc
-            servoArm_Left_Now_Degrees_Int = 0
-            servoArm_Right_Now_Degrees_Int = 0
-            servoArm_MIN_DEGREES_INT = config_servo_Min
-            servoArm_MAX_DEGREES_INT = config_servo_Max
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "For ServoArm Buttons C/D: 1000ms :), 500ms"
-            )
-            controller__Button_TriggerDelay__MSEC_INT = 500
-        }
-        if (true) {
-            quest_Dashboard.quest_Show_Oled_Cleared_Func(
-            )
-            quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
-            "Hello  : )",
-            0,
-            0
-            )
-        }
-    }
-    quest_Note_6.quest_Show_String_For_Note_Big_Func(
-    "Level 2.1: Variables_n_Constants_Yes"
+function bot_Servo_Arms__Position_Relative_Softcoded__Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+    quest_Note_3.quest_Show_String_For_Note_Small_Func(
+    "Version: Softcoded (vs Hardcoded)"
     )
-}
-function screen_Clear_Func () {
-    for (let index_X = 0; index_X <= 4; index_X++) {
-        for (let index_Y = 0; index_Y <= 4; index_Y++) {
-            if (led.point(index_X, index_Y)) {
-                led.unplot(index_X, index_Y)
-            }
-        }
-    }
-}
-input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
-    if (true) {
-        quest_Note_3.quest_Show_String_For_Note_Big_Func(
-        "Software Reset"
-        )
-        if (true) {
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "Give time for other stacks to complete under different concurrent 'SW_ModeState' ..."
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "... to not conflict with following LED Display"
-            )
-            _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Reset__ID_INT
-            quest_Note_3.quest_Show_String_For_Note_Small_Func(
-            "Continue Current State for Time Below"
-            )
-            // 1.0 too slow, 0.5 not bad, try 0.20
-            quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(0.2, quest_Time_Units_Enum.Seconds)
-        }
-        basic.showLeds(`
-            # . # . #
-            . # # # .
-            # # . # #
-            . # # # .
-            # . # . #
-            `)
-        if (true) {
-            quest_Note_3.quest_Show_String_For_Note_Small_Func(
-            "Continue Current State for Time Below"
-            )
-            quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-        }
-        control.reset()
-    }
-})
-function bot_Servo_Motors_Basic_Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
-    // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded values with config variables
-    if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "forward") {
-        images.createImage(`
-            . . # . .
-            . # # # .
-            . . # . .
-            . . # . .
-            . . . . .
-            `).showImage(0, 0)
-        quest_Note_2.quest_Show_String_For_Note_Big_Func(
-        "Below Moddable: Motor Power_% [+/-100% max]"
-        )
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        config_motor_Fwd,
-        config_motor_Fwd
-        )
-    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "backward") {
-        images.createImage(`
-            . . . . .
-            . . # . .
-            . . # . .
-            . # # # .
-            . . # . .
-            `).showImage(0, 0)
-        quest_Note_2.quest_Show_String_For_Note_Big_Func(
-        "Below Moddable: Motor Power_% [+/-100% max]"
-        )
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        0 - config_motor_Bwd,
-        0 - config_motor_Bwd
-        )
-    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "left") {
-        images.createImage(`
-            . . . . .
-            . # . . .
-            # # # # .
-            . # . . .
-            . . . . .
-            `).showImage(0, 0)
-        quest_Note_2.quest_Show_String_For_Note_Big_Func(
-        "Below Moddable: Motor Power_% [+/-100% max]"
-        )
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        0,
-        config_motor_Turn
-        )
-    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "right") {
-        images.createImage(`
-            . . . . .
-            . . . # .
-            . # # # #
-            . . . # .
-            . . . . .
-            `).showImage(0, 0)
-        quest_Note_2.quest_Show_String_For_Note_Big_Func(
-        "Below Moddable: Motor Power_% [+/-100% max]"
-        )
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        config_motor_Turn,
-        0
-        )
-    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "stop") {
-        images.createImage(`
-            . . . . .
-            . . . . .
-            . . # . .
-            . . . . .
-            . . . . .
-            `).showImage(0, 0)
-        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        0,
-        0
-        )
-    }
-}
-function bot_Servo_Motors_Turbo_Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
-    // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded turbo values with config variables
-    if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "forward_turbo") {
-        images.createImage(`
-            . . # . .
-            . # # # .
-            # . # . #
-            . . # . .
-            . . # . .
-            `).showImage(0, 0)
-        quest_Note_2.quest_Show_String_For_Note_Big_Func(
-        "Below Moddable: Forward-Turbo"
-        )
-        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        config_turbo_Fwd,
-        config_turbo_Fwd
-        )
-    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "backward_turbo") {
-        images.createImage(`
-            . . # . .
-            . . # . .
-            # . # . #
-            . # # # .
-            . . # . .
-            `).showImage(0, 0)
-        quest_Note_2.quest_Show_String_For_Note_Big_Func(
-        "Below Moddable: Backward-Turbo"
-        )
-        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        0 - config_turbo_Bwd,
-        0 - config_turbo_Bwd
-        )
-    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "left_turbo") {
-        images.createImage(`
-            . . # . .
-            . # . . .
-            # # # # #
-            . # . . .
-            . . # . .
-            `).showImage(0, 0)
-        quest_Note_2.quest_Show_String_For_Note_Big_Func(
-        "Below Moddable: Left-Turbo"
-        )
-        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        0,
-        config_turbo_Turn
-        )
-    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "right_turbo") {
-        images.createImage(`
-            . . # . .
-            . . . # .
-            # # # # #
-            . . . # .
-            . . # . .
-            `).showImage(0, 0)
-        quest_Note_2.quest_Show_String_For_Note_Big_Func(
-        "Below Moddable: Right-Turbo"
-        )
-        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        config_turbo_Turn,
-        0
-        )
-    }
-}
-input.onButtonPressed(Button.A, function () {
-    if (true) {
-        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-        "Important Coding Note: Only 1 Input Stack for Button A||B Allowed for 'main/main_backend.ts'"
-        )
-        if (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Edit_GroupChannelNum__ID_INT) {
-            quest_Note_3.quest_Show_String_For_Note_Big_Func(
-            "Buttons A & B Dual Usage: Usage #2: Given Network_Paired, Increment 'GroupChannelNum' when in Respective Edit Mode"
-            )
-            device_Mode_Edit_GroupChannelNum_ButtonA_Func()
-        } else if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Null__ID_INT) {
-            quest_Note_3.quest_Show_String_For_Note_Big_Func(
-            "Buttons A & B Dual Usage: Usage #1: Designate this micro:bit as Controller_Joystick to *Start* Network_Pairing w/ Bot"
-            )
-            quest_Note_1.quest_Show_String_For_Note_Big_Func(
-            "Code Activation of Controller_Joystick:: 1of2 : 1st micro:bit Being Pressed of Button A||B is Designated as Device:Controller_Joystick"
-            )
-            _system_Hw_DeviceType__Now__Id_Int = _system_Hw_DeviceType__Controller_Joystick__ID_INT
-            _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT
-            screen_Clear_Func()
-            setup_ControllerOnly_Func()
-        }
-        quest_Note_6.quest_Show_String_For_Note_Big_Func(
-        "Level 2.1: Variables_n_Constants_Yes"
-        )
-    }
-})
-input.onGesture(Gesture.LogoUp, function () {
-    if (false) {
-        quest_Note_6.quest_Show_String_For_Note_Big_Func(
-        "CONTROLLER: DISABLE ~ OBSOLETE"
-        )
-        // //jwc o if (device_Type_Controller_Bool && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
-        if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Controller_Joystick__ID_INT && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
-            images.createImage(`
-                . # . # .
-                . # . # .
-                . . . . .
-                . . . . .
-                . . . . .
-                `).showImage(0, 0)
-            radio.sendString("arm_090__up_full")
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "Following 0-Reset to Allow Idle/Stop Afterwards"
-            )
-            controller__Polar_OriginAtCenter__IdleCount_Int = 0
-            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int = controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
-        }
-    }
-})
-function bot_Servo_Arms__Position_Relative__Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+    quest_Note_3.quest_Show_String_For_Note_Small_Func(
+    "ServoArm Version: Relative (vs Absolute)"
+    )
     if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "arm_000__down") {
         images.createImage(`
             . . . . .
@@ -462,7 +144,394 @@ function bot_Servo_Arms__Position_Relative__Fn (network_ReceivedString_FromContr
         }
     }
 }
+function setup_System_Variables_2__UserCustomizable_Yes__Func () {
+    if (true) {
+        quest_Note_3.quest_Show_String_For_Note_Big_Func(
+        "THIS STACK CUSTOMIZABLE_YES"
+        )
+        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+        "Variable & Constant: Settings"
+        )
+        if (true) {
+            quest_Note_3.quest_Show_String_For_Note_Big_Func(
+            "Version: Hardcoded (vs Softcoded)"
+            )
+            if (true) {
+                quest_Note_1.quest_Show_String_For_Note_Big_Func(
+                "Below, Setup Code for Student:"
+                )
+                if (true) {
+                    // Motor forward power (0-100%)
+                    config_motor_Fwd = 60
+                    // Motor backward power (0-100%)
+                    config_motor_Bwd = 60
+                    // Motor turn power (0-100%)
+                    config_motor_Turn = 50
+                }
+                if (true) {
+                    // Turbo forward power (0-100%)
+                    config_turbo_Fwd = 90
+                    // Turbo backward power (0-100%)
+                    config_turbo_Bwd = 90
+                    // Turbo turn power (0-100%)
+                    config_turbo_Turn = 80
+                }
+                if (true) {
+                    // Servo arm minimum degrees (0-220)
+                    // Servo arm maximum degrees (0-220)
+                    config_servo_Min = 0
+                    // Servo arm minimum degrees (0-220)
+                    // Servo arm maximum degrees (0-220)
+                    config_servo_Max = 220
+                    // Servo arm increment degrees (1-45)
+                    config_servo_Inc = 15
+                }
+            }
+            if (true) {
+                quest_Note_1.quest_Show_String_For_Note_Big_Func(
+                "Below, Setup Code for Teacher:"
+                )
+                quest_Note_5.quest_Show_String_For_Note_Small_Func(
+                "\\/ No Need to Change The Following Blocks: \\/"
+                )
+                // // jwc 26-0122-1230: Phase 2A - Remote Configuration Variables (10 settings)
+                // Group channel (0-99)
+                config_groupChanl = network_GroupChannel_MyBotAndController_Base0_Int
+            }
+        }
+        if (true) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "Following Gears are not used in Level_1 but need these null declarations... "
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "...to allow Level_2 code to compile (though unused in Level_1)"
+            )
+            // jwc needed to fix compiler issue
+            motor_Power_Gear_01_MAX = 0
+            // jwc needed to fix compiler issue
+            motor_Power_Gear_02_MAX = 0
+        }
+        if (true) {
+            wuKong.mecanumWheel(
+            wuKong.ServoList.S1,
+            wuKong.ServoList.S3,
+            wuKong.ServoList.S0,
+            wuKong.ServoList.S2
+            )
+        }
+        if (false) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "GeekServo: For servo_360: start at 180"
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "Start w/ Label 'GeekServo' facing out for Servo_Arm_Left, for 180-degrees to face forward for optimum range"
+            )
+            servoArm_Now_Degrees_Int = 180
+            wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Now_Degrees_Int)
+            wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Now_Degrees_Int)
+            if (false) {
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "Obsolete?"
+                )
+                servoArm_DOWN_MAX_DEGREES_INT = 0
+                servoArm_UP_MAX_DEGREES_INT = 90
+                servoArm_Left_UP_DEGREES_INT = 20
+                servoArm_Right_UP_DEGREES_INT = 45
+                servoArm_Left_Up_Bool = true
+                servoArm_Right_Up_Bool = true
+            }
+        }
+        if (true) {
+            // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded servo settings with config variables
+            servoArm_Increment_Degrees_Int = config_servo_Inc
+            servoArm_MIN_DEGREES_INT = config_servo_Min
+            servoArm_MAX_DEGREES_INT = config_servo_Max
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "For ServoArm Buttons C/D: 1000ms :), 500ms"
+            )
+            controller__Button_TriggerDelay__MSEC_INT = 500
+        }
+        if (true) {
+            quest_Dashboard.quest_Show_Oled_Cleared_Func(
+            )
+            quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+            "Hello  : )",
+            0,
+            0
+            )
+        }
+    }
+    quest_Note_6.quest_Show_String_For_Note_Big_Func(
+    "Level 2.1: Variables_n_Constants_Yes"
+    )
+}
+function screen_Clear_Func () {
+    for (let index_X = 0; index_X <= 4; index_X++) {
+        for (let index_Y = 0; index_Y <= 4; index_Y++) {
+            if (led.point(index_X, index_Y)) {
+                led.unplot(index_X, index_Y)
+            }
+        }
+    }
+}
+input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
+    if (true) {
+        quest_Note_3.quest_Show_String_For_Note_Big_Func(
+        "Show: Device Name + Github Version"
+        )
+        _system_Sw_ModeState__Old__Id_Int = _system_Sw_ModeState__Now__Id_Int
+        _system_Hw_DeviceType__Now__Id_Int = _system_Sw_ModeState__Test__ID_INT
+        basic.showString("" + control.deviceName() + "-" + convertToText(_system_Github_VER_STRING))
+        _system_Hw_DeviceType__Now__Id_Int = _system_Sw_ModeState__Old__Id_Int
+    }
+    if (true) {
+        quest_Note_3.quest_Show_String_For_Note_Big_Func(
+        "Software Reset"
+        )
+        if (true) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "Give time for other stacks to complete under different concurrent 'SW_ModeState' ..."
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "... to not conflict with following LED Display"
+            )
+            _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Reset__ID_INT
+            quest_Note_3.quest_Show_String_For_Note_Small_Func(
+            "Continue Current State for Time Below"
+            )
+            // 1.0 too slow, 0.5 not bad, try 0.20
+            quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(0.2, quest_Time_Units_Enum.Seconds)
+        }
+        basic.showLeds(`
+            # . # . #
+            . # # # .
+            # # . # #
+            . # # # .
+            # . # . #
+            `)
+        if (true) {
+            quest_Note_3.quest_Show_String_For_Note_Small_Func(
+            "Continue Current State for Time Below"
+            )
+            quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
+        }
+        control.reset()
+    }
+})
+function bot_Servo_Motors_Turbo_HardCoded_Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+    quest_Note_3.quest_Show_String_For_Note_Small_Func(
+    "Version: Hardcoded (vs Softcoded)"
+    )
+    // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded turbo values with config variables
+    if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "forward_turbo") {
+        images.createImage(`
+            . . # . .
+            . # # # .
+            # . # . #
+            . . # . .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Forward-Turbo"
+        )
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        90,
+        90
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "backward_turbo") {
+        images.createImage(`
+            . . # . .
+            . . # . .
+            # . # . #
+            . # # # .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Backward-Turbo"
+        )
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        -90,
+        -90
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "left_turbo") {
+        images.createImage(`
+            . . # . .
+            . # . . .
+            # # # # #
+            . # . . .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Left-Turbo"
+        )
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        0,
+        80
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "right_turbo") {
+        images.createImage(`
+            . . # . .
+            . . . # .
+            # # # # #
+            . . . # .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Right-Turbo"
+        )
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        80,
+        0
+        )
+    }
+}
+input.onButtonPressed(Button.A, function () {
+    if (true) {
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "Important Coding Note: Only 1 Input Stack for Button A||B Allowed for 'main/main_backend.ts'"
+        )
+        if (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Edit_GroupChannelNum__ID_INT) {
+            quest_Note_3.quest_Show_String_For_Note_Big_Func(
+            "Buttons A & B Dual Usage: Usage #2: Given Network_Paired, Increment 'GroupChannelNum' when in Respective Edit Mode"
+            )
+            device_Mode_Edit_GroupChannelNum_ButtonA_Func()
+        } else if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Null__ID_INT) {
+            quest_Note_3.quest_Show_String_For_Note_Big_Func(
+            "Buttons A & B Dual Usage: Usage #1: Designate this micro:bit as Controller_Joystick to *Start* Network_Pairing w/ Bot"
+            )
+            quest_Note_1.quest_Show_String_For_Note_Big_Func(
+            "Code Activation of Controller_Joystick:: 1of2 : 1st micro:bit Being Pressed of Button A||B is Designated as Device:Controller_Joystick"
+            )
+            _system_Hw_DeviceType__Now__Id_Int = _system_Hw_DeviceType__Controller_Joystick__ID_INT
+            _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT
+            screen_Clear_Func()
+            setup_ControllerOnly_Func()
+        }
+        quest_Note_6.quest_Show_String_For_Note_Big_Func(
+        "Level 2.1: Variables_n_Constants_Yes"
+        )
+    }
+})
+input.onGesture(Gesture.LogoUp, function () {
+    if (false) {
+        quest_Note_6.quest_Show_String_For_Note_Big_Func(
+        "CONTROLLER: DISABLE ~ OBSOLETE"
+        )
+        // //jwc o if (device_Type_Controller_Bool && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
+        if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Controller_Joystick__ID_INT && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
+            images.createImage(`
+                . # . # .
+                . # . # .
+                . . . . .
+                . . . . .
+                . . . . .
+                `).showImage(0, 0)
+            radio.sendString("arm_090__up_full")
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "Following 0-Reset to Allow Idle/Stop Afterwards"
+            )
+            controller__Polar_OriginAtCenter__IdleCount_Int = 0
+            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int = controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
+        }
+    }
+})
+function bot_Servo_Motors_Softcoded_Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+    quest_Note_3.quest_Show_String_For_Note_Small_Func(
+    "Version: Softcoded (vs Hardcoded)"
+    )
+    // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded values with config variables
+    if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "forward") {
+        images.createImage(`
+            . . # . .
+            . # # # .
+            . . # . .
+            . . # . .
+            . . . . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Motor Power_% [+/-100% max]"
+        )
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        config_motor_Fwd,
+        config_motor_Fwd
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "backward") {
+        images.createImage(`
+            . . . . .
+            . . # . .
+            . . # . .
+            . # # # .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Motor Power_% [+/-100% max]"
+        )
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        -1 * config_motor_Bwd,
+        -1 * config_motor_Bwd
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "left") {
+        images.createImage(`
+            . . . . .
+            . # . . .
+            # # # # .
+            . # . . .
+            . . . . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Motor Power_% [+/-100% max]"
+        )
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        0,
+        config_motor_Turn
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "right") {
+        images.createImage(`
+            . . . . .
+            . . . # .
+            . # # # #
+            . . . # .
+            . . . . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Motor Power_% [+/-100% max]"
+        )
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        config_motor_Turn,
+        0
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "stop") {
+        images.createImage(`
+            . . . . .
+            . . . . .
+            . . # . .
+            . . . . .
+            . . . . .
+            `).showImage(0, 0)
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        0,
+        0
+        )
+    }
+}
 function bot_Servo_Arms__Position_Absolute__Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+    quest_Note_3.quest_Show_String_For_Note_Small_Func(
+    "ServoArm Version: Absolute (vs Relative)"
+    )
     if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "arm_000__down") {
         images.createImage(`
             . . . . .
@@ -759,6 +828,7 @@ function setup_System_Variables_1__UserCustomizable_Not__Func () {
                 screen_XY_Brightness_Old_Num = 0
                 screen_Y_Old_Num = 0
                 screen_X_Old_Num = 0
+                screen_Lock_Bool = false
             }
         }
     }
@@ -774,9 +844,9 @@ radio.onReceivedString(function (receivedString) {
         // //jwc o } else if (!(device_Type_Bot_Bool)) {
         if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Bot__ID_INT && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
             // Normal motor commands
-            bot_Servo_Motors_Basic_Fn(receivedString)
-            bot_Servo_Motors_Turbo_Fn(receivedString)
-            bot_Servo_Arms__Position_Relative__Fn(receivedString)
+            bot_Servo_Motors_Hardcoded_Fn(receivedString)
+            bot_Servo_Motors_Turbo_HardCoded_Fn(receivedString)
+            bot_Servo_Arms__Position_Relative_Hardcoded__Fn(receivedString)
             if (false) {
                 bot_Servo_Arms__Position_Absolute__Fn(receivedString)
             }
@@ -1050,6 +1120,251 @@ function botModeInIdle_Fn () {
     }
     return false
 }
+function bot_Servo_Arms__Position_Relative_Hardcoded__Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+    quest_Note_3.quest_Show_String_For_Note_Small_Func(
+    "Version: Hardcoded (vs Softcoded)"
+    )
+    quest_Note_3.quest_Show_String_For_Note_Small_Func(
+    "ServoArm Version: Relative (vs Absolute)"
+    )
+    if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "arm_000__down") {
+        images.createImage(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . # . # .
+            # . . . #
+            `).showImage(0, 0)
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "If [0|360] is jittery, insure battery at 75% power min."
+        )
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "GeekServo-360-Degrees-2kg:360-degrees(not 180-degrees)"
+        )
+        if (true) {
+            quest_Note_2.quest_Show_String_For_Note_Big_Func(
+            "Below Moddable: S7_ServoArm_Left"
+            )
+            servoArm_Left_Now_Degrees_Int += -15
+            servoArm_Left_Now_Degrees_Int = Math.constrain(servoArm_Left_Now_Degrees_Int, 0, 220)
+            quest_Motors.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(
+            quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left,
+            servoArm_Left_Now_Degrees_Int,
+            quest_Debug_Show_Enum.Dashboard_OLED
+            )
+        }
+        if (true) {
+            quest_Note_2.quest_Show_String_For_Note_Big_Func(
+            "Below Moddable: S6_ServoArm_Right"
+            )
+            servoArm_Right_Now_Degrees_Int += -15
+            servoArm_Right_Now_Degrees_Int = Math.constrain(servoArm_Right_Now_Degrees_Int, 0, 220)
+            quest_Motors.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(
+            quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right,
+            servoArm_Right_Now_Degrees_Int,
+            quest_Debug_Show_Enum.Dashboard_OLED
+            )
+        }
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "arm_045__up_half") {
+        images.createImage(`
+            # . . . #
+            . # . # .
+            . . . . .
+            . . . . .
+            . . . . .
+            `).showImage(0, 0)
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "If [0|360] is jittery, insure battery at 75% power min."
+        )
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "GeekServo-360-Degrees-2kg:360-degrees(not 180-degrees)"
+        )
+        if (true) {
+            quest_Note_2.quest_Show_String_For_Note_Big_Func(
+            "Below Moddable: S7_ServoArm_Left"
+            )
+            servoArm_Left_Now_Degrees_Int += 15
+            servoArm_Left_Now_Degrees_Int = Math.constrain(servoArm_Left_Now_Degrees_Int, 0, 220)
+            quest_Motors.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(
+            quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left,
+            servoArm_Left_Now_Degrees_Int,
+            quest_Debug_Show_Enum.Dashboard_OLED
+            )
+        }
+        if (true) {
+            quest_Note_2.quest_Show_String_For_Note_Big_Func(
+            "Below Moddable: S6_ServoArm_Right"
+            )
+            servoArm_Right_Now_Degrees_Int += 15
+            servoArm_Right_Now_Degrees_Int = Math.constrain(servoArm_Right_Now_Degrees_Int, 0, 220)
+            quest_Motors.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(
+            quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right,
+            servoArm_Right_Now_Degrees_Int,
+            quest_Debug_Show_Enum.Dashboard_OLED
+            )
+        }
+    }
+}
+function bot_Servo_Motors_Turbo_Softcoded_Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+    quest_Note_3.quest_Show_String_For_Note_Small_Func(
+    "Version: Softcoded (vs Hardcoded)"
+    )
+    // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded turbo values with config variables
+    if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "forward_turbo") {
+        images.createImage(`
+            . . # . .
+            . # # # .
+            # . # . #
+            . . # . .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Forward-Turbo"
+        )
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        config_turbo_Fwd,
+        config_turbo_Fwd
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "backward_turbo") {
+        images.createImage(`
+            . . # . .
+            . . # . .
+            # . # . #
+            . # # # .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Backward-Turbo"
+        )
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        -1 * config_turbo_Bwd,
+        -1 * config_turbo_Bwd
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "left_turbo") {
+        images.createImage(`
+            . . # . .
+            . # . . .
+            # # # # #
+            . # . . .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Left-Turbo"
+        )
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        0,
+        config_turbo_Turn
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "right_turbo") {
+        images.createImage(`
+            . . # . .
+            . . . # .
+            # # # # #
+            . . . # .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Right-Turbo"
+        )
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        config_turbo_Turn,
+        0
+        )
+    }
+}
+function bot_Servo_Motors_Hardcoded_Fn (network_ReceivedString_FromControllerJoystick_Str_ParamIn: string) {
+    quest_Note_3.quest_Show_String_For_Note_Small_Func(
+    "Version: Hardcoded (vs Softcoded)"
+    )
+    // // jwc 26-0122-1300: Phase 2A Step 3 - Replace hardcoded values with config variables
+    if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "forward") {
+        images.createImage(`
+            . . # . .
+            . # # # .
+            . . # . .
+            . . # . .
+            . . . . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Motor Power_% [+/-100% max]"
+        )
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        60,
+        60
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "backward") {
+        images.createImage(`
+            . . . . .
+            . . # . .
+            . . # . .
+            . # # # .
+            . . # . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Motor Power_% [+/-100% max]"
+        )
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        -60,
+        -60
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "left") {
+        images.createImage(`
+            . . . . .
+            . # . . .
+            # # # # .
+            . # . . .
+            . . . . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Motor Power_% [+/-100% max]"
+        )
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        0,
+        50
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "right") {
+        images.createImage(`
+            . . . . .
+            . . . # .
+            . # # # #
+            . . . # .
+            . . . . .
+            `).showImage(0, 0)
+        quest_Note_2.quest_Show_String_For_Note_Big_Func(
+        "Below Moddable: Motor Power_% [+/-100% max]"
+        )
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        50,
+        0
+        )
+    } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "stop") {
+        images.createImage(`
+            . . . . .
+            . . . . .
+            . . # . .
+            . . . . .
+            . . . . .
+            `).showImage(0, 0)
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        0,
+        0
+        )
+    }
+}
 function setup_Code_For_System_Func () {
     if (true) {
         setup_System_Variables_1__UserCustomizable_Not__Func()
@@ -1232,7 +1547,6 @@ setup_BotAndController_Func()
         )
     }
 }
-let _system_Github_VER_STRING = ""
 let controller__Polar_OriginAtCenter__MagnitudePixel__PreviousCycle__Int = 0
 let servoArm_DEFAULT_DEGREES_INT = 0
 let paramName2 = ""
@@ -1240,7 +1554,7 @@ let paramValue = 0
 let paramName = ""
 let equalPos = 0
 let paramPart = ""
-let _system_Sw_ModeState__Test__ID_INT = 0
+let screen_Lock_Bool = false
 let _system_Sw_ModeState__Autonomous__ID_INT = 0
 let screen_Delay_MSEC_INT = 0
 let motor_Power_Gear_Number_Int = 0
@@ -1264,16 +1578,14 @@ let _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT = 0
 let _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT = 0
 let _system_Hw_DeviceType__Controller_Joystick__ID_INT = 0
 let _system_Hw_DeviceType__Null__ID_INT = 0
-let _system_Hw_DeviceType__Now__Id_Int = 0
 let _system_Sw_ModeState__Edit_GroupChannelNum__ID_INT = 0
 let _system_Sw_ModeState__Reset__ID_INT = 0
+let _system_Github_VER_STRING = ""
+let _system_Sw_ModeState__Test__ID_INT = 0
+let _system_Hw_DeviceType__Now__Id_Int = 0
 let _system_Sw_ModeState__Now__Id_Int = 0
+let _system_Sw_ModeState__Old__Id_Int = 0
 let controller__Button_TriggerDelay__MSEC_INT = 0
-let servoArm_MAX_DEGREES_INT = 0
-let servoArm_MIN_DEGREES_INT = 0
-let servoArm_Right_Now_Degrees_Int = 0
-let servoArm_Left_Now_Degrees_Int = 0
-let servoArm_Increment_Degrees_Int = 0
 let servoArm_Right_Up_Bool = false
 let servoArm_Left_Up_Bool = false
 let servoArm_Right_UP_DEGREES_INT = 0
@@ -1283,11 +1595,9 @@ let servoArm_DOWN_MAX_DEGREES_INT = 0
 let servoArm_Now_Degrees_Int = 0
 let motor_Power_Gear_02_MAX = 0
 let motor_Power_Gear_01_MAX = 0
-let screenBrightness_Heartbeat_Count_Int = 0
-let screen_XY_Brightness_Old_Num = 0
-let screen_Y_Old_Num = 0
-let screen_X_Old_Num = 0
-let config_groupChanl = 0
+let servoArm_MAX_DEGREES_INT = 0
+let servoArm_MIN_DEGREES_INT = 0
+let servoArm_Increment_Degrees_Int = 0
 let config_servo_Inc = 0
 let config_servo_Max = 0
 let config_servo_Min = 0
@@ -1297,6 +1607,13 @@ let config_turbo_Fwd = 0
 let config_motor_Turn = 0
 let config_motor_Bwd = 0
 let config_motor_Fwd = 0
+let config_groupChanl = 0
+let screenBrightness_Heartbeat_Count_Int = 0
+let screen_XY_Brightness_Old_Num = 0
+let screen_Y_Old_Num = 0
+let screen_X_Old_Num = 0
+let servoArm_Right_Now_Degrees_Int = 0
+let servoArm_Left_Now_Degrees_Int = 0
 let network_GroupChannel_MyBotAndController_Base0_Int = 0
 images.createImage(`
     . # . # .
@@ -1312,49 +1629,15 @@ quest_Note_2.quest_Show_String_For_Note_Small_Func(
 "... Range [21-255], Default = 1"
 )
 network_GroupChannel_MyBotAndController_Base0_Int = 1
-if (true) {
-    quest_Note_1.quest_Show_String_For_Note_Big_Func(
-    "Below, Setup Code for Student:"
-    )
-    if (true) {
-        // Motor forward power (0-100%)
-        config_motor_Fwd = 60
-        // Motor backward power (0-100%)
-        config_motor_Bwd = 60
-        // Motor turn power (0-100%)
-        config_motor_Turn = 50
-    }
-    if (true) {
-        // Turbo forward power (0-100%)
-        config_turbo_Fwd = 90
-        // Turbo backward power (0-100%)
-        config_turbo_Bwd = 90
-        // Turbo turn power (0-100%)
-        config_turbo_Turn = 80
-    }
-    if (true) {
-        // Servo arm minimum degrees (0-220)
-        // Servo arm maximum degrees (0-220)
-        config_servo_Min = 0
-        // Servo arm minimum degrees (0-220)
-        // Servo arm maximum degrees (0-220)
-        config_servo_Max = 220
-        // Servo arm increment degrees (1-45)
-        config_servo_Inc = 15
-    }
-}
-if (true) {
-    quest_Note_1.quest_Show_String_For_Note_Big_Func(
-    "Below, Setup Code for Teacher:"
-    )
-    quest_Note_5.quest_Show_String_For_Note_Small_Func(
-    "\\/ No Need to Change The Following Blocks: \\/"
-    )
-    // // jwc 26-0122-1230: Phase 2A - Remote Configuration Variables (10 settings)
-    // Group channel (0-99)
-    config_groupChanl = network_GroupChannel_MyBotAndController_Base0_Int
-    setup_Code_For_System_Func()
-}
+quest_Note_1.quest_Show_String_For_Note_Big_Func(
+"Below, Setup Code for Student:"
+)
+servoArm_Left_Now_Degrees_Int = 0
+servoArm_Right_Now_Degrees_Int = 0
+quest_Note_1.quest_Show_String_For_Note_Big_Func(
+"Below, Setup Code for Teacher:"
+)
+setup_Code_For_System_Func()
 basic.forever(function () {
     if (false) {
         quest_Note_6.quest_Show_String_For_Note_Big_Func(
@@ -1690,91 +1973,6 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
-    if (true) {
-        quest_Note_3.quest_Show_String_For_Note_Big_Func(
-        "Send Network Message to 'B'ot:: Controller_Joystick: Buttons"
-        )
-        quest_Note_6.quest_Show_String_For_Note_Small_Func(
-        "Controller_Joystick Stack: Main 2of2"
-        )
-        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-        "Network Message Max_Character_Length: 19"
-        )
-        // //jwc o if (device_Type_Controller_Bool && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
-        if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Controller_Joystick__ID_INT && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
-            if (joystickbit.getButton(joystickbit.JoystickBitPin.P15)) {
-                images.createImage(`
-                    . . # . .
-                    . # # # .
-                    # . # . #
-                    . . # . .
-                    . . # . .
-                    `).showImage(0, 0)
-                radio.sendString("forward_turbo")
-                if (true) {
-                    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                    "Following 0-Reset to Allow Idle/Stop Afterwards"
-                    )
-                    controller__Polar_OriginAtCenter__IdleCount_Int = 0
-                    controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int = controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
-                }
-            } else if (joystickbit.getButton(joystickbit.JoystickBitPin.P14)) {
-                images.createImage(`
-                    . . # . .
-                    . . # . .
-                    # . # . #
-                    . # # # .
-                    . . # . .
-                    `).showImage(0, 0)
-                radio.sendString("backward_turbo")
-                if (true) {
-                    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                    "Following 0-Reset to Allow Idle/Stop Afterwards"
-                    )
-                    controller__Polar_OriginAtCenter__IdleCount_Int = 0
-                    controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int = controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
-                }
-            } else if (false) {
-                quest_Note_4.quest_Show_String_For_Note_Small_Func(
-                "Deactivate for now"
-                )
-                images.createImage(`
-                    . . # . .
-                    . # . . .
-                    # # # # #
-                    . # . . .
-                    . . # . .
-                    `).showImage(0, 0)
-                radio.sendString("left_turbo")
-                quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                "Following 0-Reset to Allow Idle/Stop Afterwards"
-                )
-                controller__Polar_OriginAtCenter__IdleCount_Int = 0
-            } else if (false) {
-                quest_Note_4.quest_Show_String_For_Note_Small_Func(
-                "Deactivate for now"
-                )
-                images.createImage(`
-                    . . # . .
-                    . . . # .
-                    # # # # #
-                    . . . # .
-                    . . # . .
-                    `).showImage(0, 0)
-                radio.sendString("right_turbo")
-                quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                "Following 0-Reset to Allow Idle/Stop Afterwards"
-                )
-                controller__Polar_OriginAtCenter__IdleCount_Int = 0
-            }
-            network__CpuCycle_Post__Management_Func()
-        }
-        quest_Note_6.quest_Show_String_For_Note_Big_Func(
-        "Level 2.1: Variables_n_Constants_Yes"
-        )
-    }
-})
-basic.forever(function () {
     quest_Note_6.quest_Show_String_For_Note_Big_Func(
     ""
     )
@@ -1915,6 +2113,97 @@ quest_Note_4.quest_Show_String_For_Note_Small_Func(
     }
 })
 basic.forever(function () {
+    _system_Github_VER_STRING = "v0.4.0"
+    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+    "©️ 2026 Quest Institute. All rights reserved."
+    )
+})
+basic.forever(function () {
+    if (true) {
+        quest_Note_3.quest_Show_String_For_Note_Big_Func(
+        "Send Network Message to 'B'ot:: Controller_Joystick: Buttons"
+        )
+        quest_Note_6.quest_Show_String_For_Note_Small_Func(
+        "Controller_Joystick Stack: Main 2of2"
+        )
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "Network Message Max_Character_Length: 19"
+        )
+        // //jwc o if (device_Type_Controller_Bool && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
+        if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Controller_Joystick__ID_INT && (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT)) {
+            if (joystickbit.getButton(joystickbit.JoystickBitPin.P15)) {
+                images.createImage(`
+                    . . # . .
+                    . # # # .
+                    # . # . #
+                    . . # . .
+                    . . # . .
+                    `).showImage(0, 0)
+                radio.sendString("forward_turbo")
+                if (true) {
+                    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                    "Following 0-Reset to Allow Idle/Stop Afterwards"
+                    )
+                    controller__Polar_OriginAtCenter__IdleCount_Int = 0
+                    controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int = controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
+                }
+            } else if (joystickbit.getButton(joystickbit.JoystickBitPin.P14)) {
+                images.createImage(`
+                    . . # . .
+                    . . # . .
+                    # . # . #
+                    . # # # .
+                    . . # . .
+                    `).showImage(0, 0)
+                radio.sendString("backward_turbo")
+                if (true) {
+                    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                    "Following 0-Reset to Allow Idle/Stop Afterwards"
+                    )
+                    controller__Polar_OriginAtCenter__IdleCount_Int = 0
+                    controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int = controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
+                }
+            } else if (false) {
+                quest_Note_4.quest_Show_String_For_Note_Small_Func(
+                "Deactivate for now"
+                )
+                images.createImage(`
+                    . . # . .
+                    . # . . .
+                    # # # # #
+                    . # . . .
+                    . . # . .
+                    `).showImage(0, 0)
+                radio.sendString("left_turbo")
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "Following 0-Reset to Allow Idle/Stop Afterwards"
+                )
+                controller__Polar_OriginAtCenter__IdleCount_Int = 0
+            } else if (false) {
+                quest_Note_4.quest_Show_String_For_Note_Small_Func(
+                "Deactivate for now"
+                )
+                images.createImage(`
+                    . . # . .
+                    . . . # .
+                    # # # # #
+                    . . . # .
+                    . . # . .
+                    `).showImage(0, 0)
+                radio.sendString("right_turbo")
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "Following 0-Reset to Allow Idle/Stop Afterwards"
+                )
+                controller__Polar_OriginAtCenter__IdleCount_Int = 0
+            }
+            network__CpuCycle_Post__Management_Func()
+        }
+        quest_Note_6.quest_Show_String_For_Note_Big_Func(
+        "Level 2.1: Variables_n_Constants_Yes"
+        )
+    }
+})
+basic.forever(function () {
     if (true) {
         quest_Note_3.quest_Show_String_For_Note_Big_Func(
         "Send Network Message to 'B'ot:: Controller_Joystick: Buttons"
@@ -1967,12 +2256,6 @@ basic.forever(function () {
         "Level 2.1: Variables_n_Constants_Yes"
         )
     }
-})
-basic.forever(function () {
-    _system_Github_VER_STRING = "v0.3.3"
-    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-    "©️ 2026 Quest Institute. All rights reserved."
-    )
 })
 basic.forever(function () {
     quest_Note_6.quest_Show_String_For_Note_Big_Func(
