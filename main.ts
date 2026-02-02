@@ -275,7 +275,10 @@ function screen_Clear_Func () {
     }
 }
 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
-    if (true) {
+    if (false) {
+        quest_Note_4.quest_Show_String_For_Note_Small_Func(
+        "BAD"
+        )
         quest_Note_3.quest_Show_String_For_Note_Big_Func(
         "Show: Device Name + Github Version"
         )
@@ -283,6 +286,15 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
         _system_Hw_DeviceType__Now__Id_Int = _system_Sw_ModeState__Test__ID_INT
         basic.showString("" + control.deviceName() + "-" + convertToText(_system_Github_VER_STRING))
         _system_Hw_DeviceType__Now__Id_Int = _system_Sw_ModeState__Old__Id_Int
+    }
+    if (true) {
+        quest_Note_3.quest_Show_String_For_Note_Big_Func(
+        "Show: Device Name + Github Version"
+        )
+        _system_Sw_ModeState__Old__Id_Int = _system_Sw_ModeState__Now__Id_Int
+        _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Test__ID_INT
+        basic.showString("" + control.deviceName() + "-" + convertToText(_system_Github_VER_STRING))
+        _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Old__Id_Int
     }
     if (true) {
         quest_Note_3.quest_Show_String_For_Note_Big_Func(
@@ -1547,6 +1559,7 @@ setup_BotAndController_Func()
         )
     }
 }
+let _system_Temp_Text_Str = ""
 let controller__Polar_OriginAtCenter__MagnitudePixel__PreviousCycle__Int = 0
 let servoArm_DEFAULT_DEGREES_INT = 0
 let paramName2 = ""
@@ -2463,6 +2476,29 @@ basic.forever(function () {
         "Level 2.1: Variables_n_Constants_Yes"
         )
     }
+})
+loops.everyInterval(3000, function () {
+    if (false) {
+        _system_Temp_Text_Str = "" + quest_Dashboard.quest_Get_SerialName_OfMyBot_Func(
+        ) + "|#" + quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func(
+        ) + "|Hw" + convertToText(_system_Hw_DeviceType__Now__Id_Int) + "|Sw" + convertToText(_system_Sw_ModeState__Now__Id_Int) + "|v:" + convertToText(_system_Github_VER_STRING)
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "18,10,5"
+        )
+        _system_Temp_Text_Str = _system_Temp_Text_Str.substr(0, 5)
+    }
+    _system_Temp_Text_Str = "" + quest_Dashboard.quest_Get_SerialName_OfMyBot_Func(
+    ) + "|" + quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func(
+    ) + "|" + convertToText(_system_Hw_DeviceType__Now__Id_Int)
+    quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(
+    _system_Temp_Text_Str
+    )
+    quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+    _system_Temp_Text_Str,
+    0,
+    3
+    )
+    serial.writeLine("*** 26-0202-1400:" + _system_Temp_Text_Str)
 })
 loops.everyInterval(3600000, function () {
     quest_Note_6.quest_Show_String_For_Note_Small_Func(
