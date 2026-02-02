@@ -1640,6 +1640,28 @@ quest_Note_1.quest_Show_String_For_Note_Big_Func(
 setup_Code_For_System_Func()
 basic.forever(function () {
     quest_Note_6.quest_Show_String_For_Note_Big_Func(
+    ""
+    )
+    if (false) {
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "Error: Unknown Msg"
+        )
+        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
+        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+        0,
+        0
+        )
+        if (true) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "For now, all 4 corners = Error: Unknown Msg"
+            )
+            screen_IconMessage_Func("error")
+        }
+    }
+})
+basic.forever(function () {
+    quest_Note_6.quest_Show_String_For_Note_Big_Func(
     "'On Logo Pressed'"
     )
     quest_Note_6.quest_Show_String_For_Note_Big_Func(
@@ -2298,26 +2320,10 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
-    quest_Note_6.quest_Show_String_For_Note_Big_Func(
-    ""
+    _system_Github_VER_STRING = "v0.5.x"
+    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+    "©️ 2026 Quest Institute. All rights reserved."
     )
-    if (false) {
-        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-        "Error: Unknown Msg"
-        )
-        // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        0,
-        0
-        )
-        if (true) {
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "For now, all 4 corners = Error: Unknown Msg"
-            )
-            screen_IconMessage_Func("error")
-        }
-    }
 })
 basic.forever(function () {
     if (true) {
@@ -2403,12 +2409,6 @@ basic.forever(function () {
         "Level 2.1: Variables_n_Constants_Yes"
         )
     }
-})
-basic.forever(function () {
-    _system_Github_VER_STRING = "v0.4.0"
-    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-    "©️ 2026 Quest Institute. All rights reserved."
-    )
 })
 basic.forever(function () {
     if (true) {
