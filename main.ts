@@ -668,12 +668,6 @@ input.onButtonPressed(Button.AB, function () {
             network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int = Math.idiv(network_GroupChannel_MyBotAndController_Base0_Int, 100)
             network_GroupChannel_MyBotAndController_Base0__Digit_Tens__Int = Math.idiv(network_GroupChannel_MyBotAndController_Base0_Int - network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int * 100, 10)
             network_GroupChannel_MyBotAndController_Base0__Digit_Ones__Int = Math.idiv(network_GroupChannel_MyBotAndController_Base0_Int - (network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int * 100 + network_GroupChannel_MyBotAndController_Base0__Digit_Tens__Int * 10), 1)
-            if (true) {
-                quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                "Since not enough input buttons to allow manual override of hundreds_digit, will override hundreds_digit to always be 0, to stabilize at a known value"
-                )
-                network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int = 0
-            }
         } else if (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Edit_GroupChannelNum__ID_INT) {
             quest_Note_1.quest_Show_String_For_Note_Small_Func(
             "Just entered the above_conditioned 'if then' state and will process accordingly as needed:"
@@ -694,6 +688,12 @@ input.onButtonPressed(Button.AB, function () {
             network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int = Math.idiv(network_GroupChannel_MyBotAndController_Base0_Int, 100)
             network_GroupChannel_MyBotAndController_Base0__Digit_Tens__Int = Math.idiv(network_GroupChannel_MyBotAndController_Base0_Int - network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int * 100, 10)
             network_GroupChannel_MyBotAndController_Base0__Digit_Ones__Int = Math.idiv(network_GroupChannel_MyBotAndController_Base0_Int - (network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int * 100 + network_GroupChannel_MyBotAndController_Base0__Digit_Tens__Int * 10), 1)
+            if (true) {
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "Since not enough input buttons to allow manual override of hundreds_digit, will override hundreds_digit to always be 0, to stabilize at a known value"
+                )
+                network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int = 0
+            }
             if (true) {
                 quest_Note_1.quest_Show_String_For_Note_Small_Func(
                 "Since not enough input buttons to allow manual override of hundreds_digit, will override hundreds_digit to always be 0, to stabilize at a known value"
@@ -1639,6 +1639,331 @@ quest_Note_1.quest_Show_String_For_Note_Big_Func(
 )
 setup_Code_For_System_Func()
 basic.forever(function () {
+    quest_Note_6.quest_Show_String_For_Note_Big_Func(
+    "'On Logo Pressed'"
+    )
+    quest_Note_6.quest_Show_String_For_Note_Big_Func(
+    "24-0916-0620 Deactivate Servo_Motor[_Left|_Right] Diagnostic Test, Since Complicates UI"
+    )
+    if (false) {
+        quest_Note_3.quest_Show_String_For_Note_Big_Func(
+        "Built-In Diagnsotic Test for Both Servo_Motors L & R"
+        )
+        if (_system_Hw_DeviceType__Now__Id_Int != _system_Hw_DeviceType__Controller_Joystick__ID_INT) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "Above 'if' condition prevent this diag test from running on 'Controller' yet allowable for any other devices, e.g. 'Bot'."
+            )
+            if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Autonomous__ID_INT) {
+                quest_Note_2.quest_Show_String_For_Note_Small_Func(
+                "Just entered the above_conditioned 'if then' state and will process accordingly as needed:"
+                )
+                _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Test__ID_INT
+                if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Reset__ID_INT) {
+                    if (true) {
+                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                        "Servo_Motors: Left Only"
+                        )
+                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
+                        "50% Power for Medium Speed"
+                        )
+                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
+                        "0% Power for Stop"
+                        )
+                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+                        50,
+                        0
+                        )
+                    }
+                    if (true) {
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
+                        )
+                        display.rotateTo(display.Direction.UpsideDown)
+                        basic.showLeds(`
+                            . # . . .
+                            # # # . .
+                            . # . . .
+                            . # . . .
+                            . # . # .
+                            `)
+                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                        "Continue Current State for Time Below"
+                        )
+                        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
+                        )
+                        display.rotateTo(display.Direction.Normal)
+                    }
+                }
+                if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Reset__ID_INT) {
+                    if (true) {
+                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                        "Servo_Motors: Right Only"
+                        )
+                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
+                        "50% Power for Medium Speed"
+                        )
+                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
+                        "0% Power for Stop"
+                        )
+                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+                        0,
+                        50
+                        )
+                    }
+                    if (true) {
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
+                        )
+                        display.rotateTo(display.Direction.UpsideDown)
+                        basic.showLeds(`
+                            . . . # .
+                            . . # # #
+                            . . . # .
+                            . . . # .
+                            . # . # .
+                            `)
+                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                        "Continue Current State for Time Below"
+                        )
+                        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
+                        )
+                        display.rotateTo(display.Direction.Normal)
+                    }
+                }
+                if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Reset__ID_INT) {
+                    if (true) {
+                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                        "Servo_Motors: Left + Right"
+                        )
+                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
+                        "50% Power for Medium Speed"
+                        )
+                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
+                        "0% Power for Stop"
+                        )
+                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+                        50,
+                        50
+                        )
+                    }
+                    if (true) {
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
+                        )
+                        display.rotateTo(display.Direction.UpsideDown)
+                        basic.showLeds(`
+                            . # . # .
+                            # # # # #
+                            . # . # .
+                            . # . # .
+                            . # . # .
+                            `)
+                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                        "Continue Current State for Time Below"
+                        )
+                        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
+                        )
+                        display.rotateTo(display.Direction.Normal)
+                    }
+                }
+                if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Reset__ID_INT) {
+                    if (true) {
+                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                        "Servo_Motors: All Stop"
+                        )
+                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+                        0,
+                        0
+                        )
+                    }
+                    if (true) {
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
+                        )
+                        display.rotateTo(display.Direction.UpsideDown)
+                        basic.showLeds(`
+                            . . . . .
+                            . . . . .
+                            . . . . .
+                            . . . . .
+                            . # . # .
+                            `)
+                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                        "Continue Current State for Time Below"
+                        )
+                        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
+                        )
+                        display.rotateTo(display.Direction.Normal)
+                    }
+                }
+                if (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Reset__ID_INT) {
+                    if (true) {
+                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                        "Servo_Motors: All Stop"
+                        )
+                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
+                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+                        0,
+                        0
+                        )
+                    }
+                    if (true) {
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
+                        )
+                        display.rotateTo(display.Direction.UpsideDown)
+                        basic.showLeds(`
+                            . . . . .
+                            . . . . .
+                            . . . . .
+                            . . . . .
+                            . # . # .
+                            `)
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
+                        )
+                        display.rotateTo(display.Direction.Normal)
+                    }
+                }
+                quest_Note_2.quest_Show_String_For_Note_Small_Func(
+                "Just exited the above_conditioned 'if then' state and will process accordingly as needed:"
+                )
+                _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT
+            }
+        }
+    }
+})
+basic.forever(function () {
+    quest_Note_3.quest_Show_String_For_Note_Big_Func(
+    "Network-Cycle Management Stack"
+    )
+    if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Controller_Joystick__ID_INT) {
+        quest_Note_5.quest_Show_String_For_Note_Small_Func(
+        "/\\ Controller-Only to Avoid Premature Auto-Pair"
+        )
+        if (false) {
+            serial.writeString("*** A1:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            controller__Polar_OriginAtCenter__MagnitudePixel__Int,
+            8,
+            2
+            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            controller__Polar_OriginAtCenter__IdleCount_Int,
+            8,
+            2
+            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int,
+            8,
+            2
+            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT,
+            8,
+            2
+            ) + "|")
+        }
+        if (false) {
+            serial.writeLine("*** A2: " + "Joy_X:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            joystickbit.getRockerValue(joystickbit.rockerType.X),
+            8,
+            2
+            ) + " Joy_Y:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            joystickbit.getRockerValue(joystickbit.rockerType.Y),
+            8,
+            2
+            ))
+        }
+        if (true) {
+            network__CpuCycle_Post__Management_Func()
+quest_Note_4.quest_Show_String_For_Note_Small_Func(
+            "See if this will slow down to column-align serial-prints"
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "See if this will slow down to column-align serial-prints"
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "20ms (min standard), 100ms, 10000ms (noticably slower, 1sec, but no help)"
+            )
+            quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(20, quest_Time_Units_Enum.Milliseconds)
+            if (false) {
+                quest_Note_5.quest_Show_String_For_Note_Small_Func(
+                "TEMP FIX \\/\\/"
+                )
+                serial.writeLine("* 26-0118-0600:" + controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + botModeInIdle_Fn())
+            }
+        }
+        if (botModeInIdle_Fn()) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "Avoid sending 'stop' to not interfere.. "
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "..turbo-max-motion & other user-inputs pressed"
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "Avoid sending 'stop' after above threshold-max,.."
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "..to not flood Led-5x5 and Network"
+            )
+            if (false) {
+                quest_Note_5.quest_Show_String_For_Note_Small_Func(
+                "TEMP FIX \\/\\/"
+                )
+                serial.writeLine("* 26-0118-0601:" + controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + botModeInIdle_Fn())
+            }
+            if (controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int == 0) {
+                if (true) {
+                    images.createImage(`
+                        . . . . .
+                        . . . . .
+                        . . # . .
+                        . . . . .
+                        . . . . .
+                        `).showImage(0, 0)
+                    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                    "Zero values if not exceed 'Deadzone_AsIdle'"
+                    )
+                    radio.sendString("stop")
+                    controller__Polar_OriginAtCenter__IdleCount_Int = 0
+                    controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int += controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
+                    serial.writeLine("*** B: STOP" + "")
+                }
+            }
+            controller__Polar_OriginAtCenter__IdleCount_Int += 1
+            if (false) {
+                controller__Polar_OriginAtCenter__IdleCount_Int = 0
+                if (controller__Polar_OriginAtCenter__IdleCount_Int % 5 == 0) {
+                    if (true) {
+                        images.createImage(`
+                            . . . . .
+                            . . . . .
+                            . . # . .
+                            . . . . .
+                            . . . . .
+                            `).showImage(0, 0)
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "Zero values if not exceed 'Deadzone_AsIdle'"
+                        )
+                        radio.sendString("stop")
+                        controller__Polar_OriginAtCenter__IdleCount_Int = 0
+                        serial.writeString("*** B: STOP" + "")
+                    }
+                }
+            }
+        }
+    }
+})
+basic.forever(function () {
     if (false) {
         quest_Note_6.quest_Show_String_For_Note_Big_Func(
         "<-- Bot Code (Web-Server)  |"
@@ -2137,331 +2462,6 @@ basic.forever(function () {
         quest_Note_6.quest_Show_String_For_Note_Big_Func(
         "Level 2.1: Variables_n_Constants_Yes"
         )
-    }
-})
-basic.forever(function () {
-    quest_Note_6.quest_Show_String_For_Note_Big_Func(
-    "'On Logo Pressed'"
-    )
-    quest_Note_6.quest_Show_String_For_Note_Big_Func(
-    "24-0916-0620 Deactivate Servo_Motor[_Left|_Right] Diagnostic Test, Since Complicates UI"
-    )
-    if (false) {
-        quest_Note_3.quest_Show_String_For_Note_Big_Func(
-        "Built-In Diagnsotic Test for Both Servo_Motors L & R"
-        )
-        if (_system_Hw_DeviceType__Now__Id_Int != _system_Hw_DeviceType__Controller_Joystick__ID_INT) {
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "Above 'if' condition prevent this diag test from running on 'Controller' yet allowable for any other devices, e.g. 'Bot'."
-            )
-            if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Autonomous__ID_INT) {
-                quest_Note_2.quest_Show_String_For_Note_Small_Func(
-                "Just entered the above_conditioned 'if then' state and will process accordingly as needed:"
-                )
-                _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Test__ID_INT
-                if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Reset__ID_INT) {
-                    if (true) {
-                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-                        "Servo_Motors: Left Only"
-                        )
-                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
-                        "50% Power for Medium Speed"
-                        )
-                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
-                        "0% Power for Stop"
-                        )
-                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-                        50,
-                        0
-                        )
-                    }
-                    if (true) {
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
-                        )
-                        display.rotateTo(display.Direction.UpsideDown)
-                        basic.showLeds(`
-                            . # . . .
-                            # # # . .
-                            . # . . .
-                            . # . . .
-                            . # . # .
-                            `)
-                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-                        "Continue Current State for Time Below"
-                        )
-                        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
-                        )
-                        display.rotateTo(display.Direction.Normal)
-                    }
-                }
-                if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Reset__ID_INT) {
-                    if (true) {
-                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-                        "Servo_Motors: Right Only"
-                        )
-                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
-                        "50% Power for Medium Speed"
-                        )
-                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
-                        "0% Power for Stop"
-                        )
-                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-                        0,
-                        50
-                        )
-                    }
-                    if (true) {
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
-                        )
-                        display.rotateTo(display.Direction.UpsideDown)
-                        basic.showLeds(`
-                            . . . # .
-                            . . # # #
-                            . . . # .
-                            . . . # .
-                            . # . # .
-                            `)
-                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-                        "Continue Current State for Time Below"
-                        )
-                        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
-                        )
-                        display.rotateTo(display.Direction.Normal)
-                    }
-                }
-                if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Reset__ID_INT) {
-                    if (true) {
-                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-                        "Servo_Motors: Left + Right"
-                        )
-                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
-                        "50% Power for Medium Speed"
-                        )
-                        quest_Note_2.quest_Show_String_For_Note_Small_Func(
-                        "0% Power for Stop"
-                        )
-                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-                        50,
-                        50
-                        )
-                    }
-                    if (true) {
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
-                        )
-                        display.rotateTo(display.Direction.UpsideDown)
-                        basic.showLeds(`
-                            . # . # .
-                            # # # # #
-                            . # . # .
-                            . # . # .
-                            . # . # .
-                            `)
-                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-                        "Continue Current State for Time Below"
-                        )
-                        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
-                        )
-                        display.rotateTo(display.Direction.Normal)
-                    }
-                }
-                if (_system_Sw_ModeState__Now__Id_Int != _system_Sw_ModeState__Reset__ID_INT) {
-                    if (true) {
-                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-                        "Servo_Motors: All Stop"
-                        )
-                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-                        0,
-                        0
-                        )
-                    }
-                    if (true) {
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
-                        )
-                        display.rotateTo(display.Direction.UpsideDown)
-                        basic.showLeds(`
-                            . . . . .
-                            . . . . .
-                            . . . . .
-                            . . . . .
-                            . # . # .
-                            `)
-                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-                        "Continue Current State for Time Below"
-                        )
-                        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
-                        )
-                        display.rotateTo(display.Direction.Normal)
-                    }
-                }
-                if (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Reset__ID_INT) {
-                    if (true) {
-                        quest_Note_3.quest_Show_String_For_Note_Small_Func(
-                        "Servo_Motors: All Stop"
-                        )
-                        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
-                        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-                        0,
-                        0
-                        )
-                    }
-                    if (true) {
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: Begin"
-                        )
-                        display.rotateTo(display.Direction.UpsideDown)
-                        basic.showLeds(`
-                            . . . . .
-                            . . . . .
-                            . . . . .
-                            . . . . .
-                            . # . # .
-                            `)
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "From Driver's Viewpoint, Bot's micro:bit is upside_down so set Led_Display_Screen likewise: End"
-                        )
-                        display.rotateTo(display.Direction.Normal)
-                    }
-                }
-                quest_Note_2.quest_Show_String_For_Note_Small_Func(
-                "Just exited the above_conditioned 'if then' state and will process accordingly as needed:"
-                )
-                _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT
-            }
-        }
-    }
-})
-basic.forever(function () {
-    quest_Note_3.quest_Show_String_For_Note_Big_Func(
-    "Network-Cycle Management Stack"
-    )
-    if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Controller_Joystick__ID_INT) {
-        quest_Note_5.quest_Show_String_For_Note_Small_Func(
-        "/\\ Controller-Only to Avoid Premature Auto-Pair"
-        )
-        if (false) {
-            serial.writeString("*** A1:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            controller__Polar_OriginAtCenter__MagnitudePixel__Int,
-            8,
-            2
-            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            controller__Polar_OriginAtCenter__IdleCount_Int,
-            8,
-            2
-            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int,
-            8,
-            2
-            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT,
-            8,
-            2
-            ) + "|")
-        }
-        if (false) {
-            serial.writeLine("*** A2: " + "Joy_X:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            joystickbit.getRockerValue(joystickbit.rockerType.X),
-            8,
-            2
-            ) + " Joy_Y:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            joystickbit.getRockerValue(joystickbit.rockerType.Y),
-            8,
-            2
-            ))
-        }
-        if (true) {
-            network__CpuCycle_Post__Management_Func()
-quest_Note_4.quest_Show_String_For_Note_Small_Func(
-            "See if this will slow down to column-align serial-prints"
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "See if this will slow down to column-align serial-prints"
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "20ms (min standard), 100ms, 10000ms (noticably slower, 1sec, but no help)"
-            )
-            quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(20, quest_Time_Units_Enum.Milliseconds)
-            if (false) {
-                quest_Note_5.quest_Show_String_For_Note_Small_Func(
-                "TEMP FIX \\/\\/"
-                )
-                serial.writeLine("* 26-0118-0600:" + controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + botModeInIdle_Fn())
-            }
-        }
-        if (botModeInIdle_Fn()) {
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "Avoid sending 'stop' to not interfere.. "
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "..turbo-max-motion & other user-inputs pressed"
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "Avoid sending 'stop' after above threshold-max,.."
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "..to not flood Led-5x5 and Network"
-            )
-            if (false) {
-                quest_Note_5.quest_Show_String_For_Note_Small_Func(
-                "TEMP FIX \\/\\/"
-                )
-                serial.writeLine("* 26-0118-0601:" + controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + botModeInIdle_Fn())
-            }
-            if (controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int == 0) {
-                if (true) {
-                    images.createImage(`
-                        . . . . .
-                        . . . . .
-                        . . # . .
-                        . . . . .
-                        . . . . .
-                        `).showImage(0, 0)
-                    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                    "Zero values if not exceed 'Deadzone_AsIdle'"
-                    )
-                    radio.sendString("stop")
-                    controller__Polar_OriginAtCenter__IdleCount_Int = 0
-                    controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int += controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
-                    serial.writeLine("*** B: STOP" + "")
-                }
-            }
-            controller__Polar_OriginAtCenter__IdleCount_Int += 1
-            if (false) {
-                controller__Polar_OriginAtCenter__IdleCount_Int = 0
-                if (controller__Polar_OriginAtCenter__IdleCount_Int % 5 == 0) {
-                    if (true) {
-                        images.createImage(`
-                            . . . . .
-                            . . . . .
-                            . . # . .
-                            . . . . .
-                            . . . . .
-                            `).showImage(0, 0)
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "Zero values if not exceed 'Deadzone_AsIdle'"
-                        )
-                        radio.sendString("stop")
-                        controller__Polar_OriginAtCenter__IdleCount_Int = 0
-                        serial.writeString("*** B: STOP" + "")
-                    }
-                }
-            }
-        }
     }
 })
 loops.everyInterval(3600000, function () {
