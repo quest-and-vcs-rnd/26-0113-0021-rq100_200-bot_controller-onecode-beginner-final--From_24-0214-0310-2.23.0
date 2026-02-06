@@ -1,6 +1,6 @@
 {
     "name": "robot100_200-RemoteControl-Beginner-ServoArms (v0.5.x: 26-0206-1020)",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "description": "",
     "dependencies": {
         "core": "*",
