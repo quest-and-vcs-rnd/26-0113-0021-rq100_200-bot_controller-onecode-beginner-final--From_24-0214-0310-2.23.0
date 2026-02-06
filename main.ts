@@ -2482,23 +2482,57 @@ loops.everyInterval(3000, function () {
         _system_Temp_Text_Str = "" + quest_Dashboard.quest_Get_SerialName_OfMyBot_Func(
         ) + "|#" + quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func(
         ) + "|Hw" + convertToText(_system_Hw_DeviceType__Now__Id_Int) + "|Sw" + convertToText(_system_Sw_ModeState__Now__Id_Int) + "|v:" + convertToText(_system_Github_VER_STRING)
+        _system_Temp_Text_Str = "" + quest_Dashboard.quest_Get_SerialName_OfMyBot_Func(
+        ) + "|" + quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func(
+        ) + "|" + convertToText(_system_Hw_DeviceType__Now__Id_Int)
         quest_Note_1.quest_Show_String_For_Note_Small_Func(
         "18,10,5"
         )
         _system_Temp_Text_Str = _system_Temp_Text_Str.substr(0, 5)
     }
-    _system_Temp_Text_Str = "" + quest_Dashboard.quest_Get_SerialName_OfMyBot_Func(
-    ) + "|" + quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func(
-    ) + "|" + convertToText(_system_Hw_DeviceType__Now__Id_Int)
-    quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(
-    _system_Temp_Text_Str
-    )
-    quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
-    _system_Temp_Text_Str,
-    0,
-    3
-    )
-    serial.writeLine("*** 26-0202-1400:" + _system_Temp_Text_Str)
+    if (true) {
+        quest_Dashboard.quest_Dashboard_Network_SendLogin_Func(
+        network_GroupChannel_MyBotAndController_Base0_Int
+        )
+    }
+    if (true) {
+        _system_Temp_Text_Str = "" + quest_Dashboard.quest_Get_SerialName_OfMyBot_Func(
+        ) + "|" + quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func(
+        )
+        quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(
+        _system_Temp_Text_Str
+        )
+        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        _system_Temp_Text_Str,
+        0,
+        3
+        )
+        serial.writeLine("*** 26-0202-1400:" + _system_Temp_Text_Str)
+    }
+    if (true) {
+        _system_Temp_Text_Str = "" + convertToText(_system_Hw_DeviceType__Now__Id_Int) + "|" + convertToText(_system_Sw_ModeState__Now__Id_Int)
+        quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(
+        _system_Temp_Text_Str
+        )
+        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        _system_Temp_Text_Str,
+        0,
+        4
+        )
+        serial.writeLine("*** 26-0202-1402:" + _system_Temp_Text_Str)
+    }
+    if (true) {
+        _system_Temp_Text_Str = "" + _system_Github_VER_STRING
+        quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(
+        _system_Temp_Text_Str
+        )
+        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(
+        _system_Temp_Text_Str,
+        0,
+        5
+        )
+        serial.writeLine("*** 26-0202-1404:" + _system_Temp_Text_Str)
+    }
 })
 loops.everyInterval(3600000, function () {
     quest_Note_6.quest_Show_String_For_Note_Small_Func(
