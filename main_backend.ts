@@ -823,65 +823,91 @@ basic.forever(function () {
     ////jwc y     basic.showString(":")
     ////jwc y }
 
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("A")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("o")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("r")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("B")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("o")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("n")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("C")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("o")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("n")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("t")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("r")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("o")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("l")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("l")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("e")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString("r")
+    ////jwc 26-0329-0300 Reduce Text: }
+    ////jwc 26-0329-0300 Reduce Text: 
+    ////jwc 26-0329-0300 Reduce Text: if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+    ////jwc 26-0329-0300 Reduce Text:     basic.showString(".")
+    ////jwc 26-0329-0300 Reduce Text: }
+
+
+
     if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
         basic.showString(convertToText(network_GroupChannel_MyBotAndController_Base0_Int))
     }
     if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
         basic.showString("~")
     }
-
     if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("A")
+        basic.showString("J")
     }
     if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
         basic.showString("o")
     }
     if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("r")
+        basic.showString("y")
+    }
+    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+        basic.showString(":")
+    }
+    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+        basic.showString("A")
+    }
+    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
+        basic.showString(",")
     }
     if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
         basic.showString("B")
     }
     if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("o")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("n")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("C")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("o")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("n")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("t")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("r")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("o")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("l")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("l")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("e")
-    }
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString("r")
-    }
-    
-    if (startup_ScrollingText_ShowOrNotShow_ReturnBool_Func()) {
-        basic.showString(".")
-    }
+        basic.showString("~")
+    }    
 })
 
 
