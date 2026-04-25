@@ -278,7 +278,7 @@ function screen_Clear_Func () {
     }
 }
 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
-    if (true) {
+    if (false) {
         quest_Note_3.quest_Show_String_For_Note_Big_Func(
         "Software Reset"
         )
@@ -1372,7 +1372,7 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         )
         _system_Sw_ModeState__Old__Id_Int = _system_Sw_ModeState__Now__Id_Int
         _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Test__ID_INT
-        basic.showString("" + control.deviceName() + "-" + convertToText(_system_Github_VER_STRING))
+        basic.showString("-" + control.deviceName() + "-" + convertToText(_system_Github_VER_STRING))
         _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Old__Id_Int
     }
     if (false) {
@@ -1652,7 +1652,7 @@ quest_Note_2.quest_Show_String_For_Note_Big_Func(
 quest_Note_2.quest_Show_String_For_Note_Small_Func(
 "... Range [21-255], Default = 1"
 )
-network_GroupChannel_MyBotAndController_Base0_Int = 1
+network_GroupChannel_MyBotAndController_Base0_Int = 99
 quest_Note_1.quest_Show_String_For_Note_Big_Func(
 "Below, Setup Code for Student:"
 )
