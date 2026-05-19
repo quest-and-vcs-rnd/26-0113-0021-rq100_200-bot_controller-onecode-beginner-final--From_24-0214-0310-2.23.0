@@ -11,38 +11,38 @@ function screen_PlotNewDot_ClearOldDot_WithHeartbeat_Func (screen_x_new_num: num
     screen_XY_Brightness_Old_Num = led.pointBrightness(screen_x_new_num, screen_y_new_num)
     led.plotBrightness(screen_x_new_num, screen_y_new_num, screenBrightness_Heartbeat_Count_Int)
 }
-function settingsOverride_FlashMem_Save_Func () {
-    if (true) {
-        // // jwc 26-0122-1230: Phase 2A - Expanded to save all 10 config settings
-        if (false) {
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "\\/ For Testing"
-            )
-            network_GroupChannel_MyBotAndController_Base0_Int = 12
-        }
-        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-        "Appears 15 char max, can have '_, upper/lower case"
-        )
-        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-        "Reflashing Code seems to clear Flash"
-        )
-        // // jwc 26-0122-1230: Save all 10 configuration settings to flash
-        flashstorage.put("groupChanl", convertToText(config_groupChanl))
-        flashstorage.put("motorFwd", convertToText(config_motor_Fwd))
-        flashstorage.put("motorBwd", convertToText(config_motor_Bwd))
-        flashstorage.put("motorTurn", convertToText(config_motor_Turn))
-        flashstorage.put("turboFwd", convertToText(config_turbo_Fwd))
-        flashstorage.put("turboBwd", convertToText(config_turbo_Bwd))
-        flashstorage.put("turboTurn", convertToText(config_turbo_Turn))
-        flashstorage.put("servoMin", convertToText(config_servo_Min))
-        flashstorage.put("servoMax", convertToText(config_servo_Max))
-        flashstorage.put("servoInc", convertToText(config_servo_Inc))
-        // // jwc 26-0122-1230: Also update legacy channel variable for backward compatibility
-        network_GroupChannel_MyBotAndController_Base0_Int = config_groupChanl
-        flashstorage.put("netGroupChannel", convertToText(network_GroupChannel_MyBotAndController_Base0_Int))
-        serial.writeLine("* 26-0122-1230: Config saved: Ch=" + config_groupChanl + " MotorFwd=" + config_motor_Fwd + " FlashPairs=" + flashstorage.size())
-    }
-}
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: function settingsOverride_FlashMem_Save_Func () {
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     if (false) {
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         // // jwc 26-0122-1230: Phase 2A - Expanded to save all 10 config settings
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         if (false) {
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:             quest_Note_1.quest_Show_String_For_Note_Small_Func(
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:             "\\/ For Testing"
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:             )
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:             network_GroupChannel_MyBotAndController_Base0_Int = 12
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         }
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         quest_Note_1.quest_Show_String_For_Note_Small_Func(
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         "Appears 15 char max, can have '_, upper/lower case"
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         )
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         quest_Note_1.quest_Show_String_For_Note_Small_Func(
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         "Reflashing Code seems to clear Flash"
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         )
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         // // jwc 26-0122-1230: Save all 10 configuration settings to flash
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("groupChanl", convertToText(config_groupChanl))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("motorFwd", convertToText(config_motor_Fwd))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("motorBwd", convertToText(config_motor_Bwd))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("motorTurn", convertToText(config_motor_Turn))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("turboFwd", convertToText(config_turbo_Fwd))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("turboBwd", convertToText(config_turbo_Bwd))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("turboTurn", convertToText(config_turbo_Turn))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("servoMin", convertToText(config_servo_Min))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("servoMax", convertToText(config_servo_Max))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("servoInc", convertToText(config_servo_Inc))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         // // jwc 26-0122-1230: Also update legacy channel variable for backward compatibility
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         network_GroupChannel_MyBotAndController_Base0_Int = config_groupChanl
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         flashstorage.put("netGroupChannel", convertToText(network_GroupChannel_MyBotAndController_Base0_Int))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:         serial.writeLine("* 26-0122-1230: Config saved: Ch=" + config_groupChanl + " MotorFwd=" + config_motor_Fwd + " FlashPairs=" + flashstorage.size())
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     }
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: }
 function config_SendAllValues_Func () {
     // // jwc 26-0122-1400: Phase 2A Step 5 - Send all configuration values via radio
     serial.writeLine("* CFG SEND ALL: Sending all 10 config values")
@@ -621,24 +621,24 @@ function bot_Servo_Arms__Position_Absolute__Fn (network_ReceivedString_FromContr
         )
     }
 }
-function settingsOverride_FlashMem_Load_Func () {
-    // // jwc 26-0122-1230: Phase 2A - Expanded to load all 10 config settings
-    serial.writeLine("* 26-0122-1230: Loading config from flash: Pairs=" + flashstorage.size())
-    // // jwc 26-0122-1230: Load all 10 configuration settings from flash (with defaults)
-    config_groupChanl = parseFloat(flashstorage.getOrDefault("groupChanl", convertToText(config_groupChanl)))
-    config_motor_Fwd = parseFloat(flashstorage.getOrDefault("motorFwd", convertToText(config_motor_Fwd)))
-    config_motor_Bwd = parseFloat(flashstorage.getOrDefault("motorBwd", convertToText(config_motor_Bwd)))
-    config_motor_Turn = parseFloat(flashstorage.getOrDefault("motorTurn", convertToText(config_motor_Turn)))
-    config_turbo_Fwd = parseFloat(flashstorage.getOrDefault("turboFwd", convertToText(config_turbo_Fwd)))
-    config_turbo_Bwd = parseFloat(flashstorage.getOrDefault("turboBwd", convertToText(config_turbo_Bwd)))
-    config_turbo_Turn = parseFloat(flashstorage.getOrDefault("turboTurn", convertToText(config_turbo_Turn)))
-    config_servo_Min = parseFloat(flashstorage.getOrDefault("servoMin", convertToText(config_servo_Min)))
-    config_servo_Max = parseFloat(flashstorage.getOrDefault("servoMax", convertToText(config_servo_Max)))
-    config_servo_Inc = parseFloat(flashstorage.getOrDefault("servoInc", convertToText(config_servo_Inc)))
-    // // jwc 26-0122-1230: Update legacy channel variable for backward compatibility
-    network_GroupChannel_MyBotAndController_Base0_Int = config_groupChanl
-    serial.writeLine("* 26-0122-1230: Config loaded: Ch=" + config_groupChanl + " MotorFwd=" + config_motor_Fwd + " ServoInc=" + config_servo_Inc)
-}
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: function settingsOverride_FlashMem_Load_Func () {
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     // // jwc 26-0122-1230: Phase 2A - Expanded to load all 10 config settings
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     serial.writeLine("* 26-0122-1230: Loading config from flash: Pairs=" + flashstorage.size())
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     // // jwc 26-0122-1230: Load all 10 configuration settings from flash (with defaults)
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_groupChanl = parseFloat(flashstorage.getOrDefault("groupChanl", convertToText(config_groupChanl)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_motor_Fwd = parseFloat(flashstorage.getOrDefault("motorFwd", convertToText(config_motor_Fwd)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_motor_Bwd = parseFloat(flashstorage.getOrDefault("motorBwd", convertToText(config_motor_Bwd)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_motor_Turn = parseFloat(flashstorage.getOrDefault("motorTurn", convertToText(config_motor_Turn)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_turbo_Fwd = parseFloat(flashstorage.getOrDefault("turboFwd", convertToText(config_turbo_Fwd)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_turbo_Bwd = parseFloat(flashstorage.getOrDefault("turboBwd", convertToText(config_turbo_Bwd)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_turbo_Turn = parseFloat(flashstorage.getOrDefault("turboTurn", convertToText(config_turbo_Turn)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_servo_Min = parseFloat(flashstorage.getOrDefault("servoMin", convertToText(config_servo_Min)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_servo_Max = parseFloat(flashstorage.getOrDefault("servoMax", convertToText(config_servo_Max)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     config_servo_Inc = parseFloat(flashstorage.getOrDefault("servoInc", convertToText(config_servo_Inc)))
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     // // jwc 26-0122-1230: Update legacy channel variable for backward compatibility
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     network_GroupChannel_MyBotAndController_Base0_Int = config_groupChanl
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final:     serial.writeLine("* 26-0122-1230: Config loaded: Ch=" + config_groupChanl + " MotorFwd=" + config_motor_Fwd + " ServoInc=" + config_servo_Inc)
+// // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: }
 input.onButtonPressed(Button.AB, function () {
     // //jwc o if (device_Type_Controller_Bool || device_Type_Bot_Bool) {
     if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Bot__ID_INT || _system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Controller_Joystick__ID_INT) {
@@ -657,6 +657,7 @@ input.onButtonPressed(Button.AB, function () {
         // //jwc o     network_GroupChannel_MyBotAndController_Base0__Digit_Ones__Int = network_GroupChannel_MyBotAndController_Base0_Int % 10
         // //jwc o }
         // //jwc o network_GroupChannel_Show_Func()
+        // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
         if (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT || _system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Run__AndShow_02_GroupChannelNum__ID_INT) {
             quest_Note_1.quest_Show_String_For_Note_Small_Func(
             "Just entered the above_conditioned 'if then' state and will process accordingly as needed:"
@@ -672,11 +673,11 @@ input.onButtonPressed(Button.AB, function () {
             _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT
             network_GroupChannel_MyBotAndController_Base0_Int = network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int * 100 + (network_GroupChannel_MyBotAndController_Base0__Digit_Tens__Int * 10 + network_GroupChannel_MyBotAndController_Base0__Digit_Ones__Int * 1)
             radio.setGroup(network_GroupChannel_MyBotAndController_Base0_Int)
-            settingsOverride_FlashMem_Save_Func()
         }
     } else if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Null__ID_INT) {
         // //jwc debug: serial.writeLine("HW_Null: SW_Null >> SW_Edit")
         // //jwc debug: serial.writeLine("HW_Null: SW_Edit >> SW_Null")
+        // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
         if (_system_Sw_ModeState__Now__Id_Int == _system_Sw_ModeState__Null__ID_INT) {
             quest_Note_1.quest_Show_String_For_Note_Small_Func(
             "Just entered the above_conditioned 'if then' state and will process accordingly as needed:"
@@ -704,7 +705,6 @@ input.onButtonPressed(Button.AB, function () {
             _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Null__ID_INT
             network_GroupChannel_MyBotAndController_Base0_Int = network_GroupChannel_MyBotAndController_Base0__Digit_Hundreds__Int * 100 + (network_GroupChannel_MyBotAndController_Base0__Digit_Tens__Int * 10 + network_GroupChannel_MyBotAndController_Base0__Digit_Ones__Int * 1)
             radio.setGroup(network_GroupChannel_MyBotAndController_Base0_Int)
-            settingsOverride_FlashMem_Save_Func()
         }
     }
     if (true) {
@@ -941,49 +941,49 @@ function config_ParseCommand_Func (cmdString: string) {
                     config_groupChanl = paramValue
                     network_GroupChannel_MyBotAndController_Base0_Int = config_groupChanl
                     radio.setGroup(network_GroupChannel_MyBotAndController_Base0_Int)
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: groupChanl=" + config_groupChanl)
                     return true
                 }
             } else if (paramName == "motorFwd") {
                 if (paramValue >= 0 && paramValue <= 100) {
                     config_motor_Fwd = paramValue
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: motorFwd=" + config_motor_Fwd)
                     return true
                 }
             } else if (paramName == "motorBwd") {
                 if (paramValue >= 0 && paramValue <= 100) {
                     config_motor_Bwd = paramValue
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: motorBwd=" + config_motor_Bwd)
                     return true
                 }
             } else if (paramName == "motorTurn") {
                 if (paramValue >= 0 && paramValue <= 100) {
                     config_motor_Turn = paramValue
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: motorTurn=" + config_motor_Turn)
                     return true
                 }
             } else if (paramName == "turboFwd") {
                 if (paramValue >= 0 && paramValue <= 100) {
                     config_turbo_Fwd = paramValue
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: turboFwd=" + config_turbo_Fwd)
                     return true
                 }
             } else if (paramName == "turboBwd") {
                 if (paramValue >= 0 && paramValue <= 100) {
                     config_turbo_Bwd = paramValue
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: turboBwd=" + config_turbo_Bwd)
                     return true
                 }
             } else if (paramName == "turboTurn") {
                 if (paramValue >= 0 && paramValue <= 100) {
                     config_turbo_Turn = paramValue
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: turboTurn=" + config_turbo_Turn)
                     return true
                 }
@@ -991,7 +991,7 @@ function config_ParseCommand_Func (cmdString: string) {
                 if (paramValue >= 0 && paramValue <= 220) {
                     config_servo_Min = paramValue
                     servoArm_MIN_DEGREES_INT = config_servo_Min
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: servoMin=" + config_servo_Min)
                     return true
                 }
@@ -999,7 +999,7 @@ function config_ParseCommand_Func (cmdString: string) {
                 if (paramValue >= 0 && paramValue <= 220) {
                     config_servo_Max = paramValue
                     servoArm_MAX_DEGREES_INT = config_servo_Max
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: servoMax=" + config_servo_Max)
                     return true
                 }
@@ -1007,7 +1007,7 @@ function config_ParseCommand_Func (cmdString: string) {
                 if (paramValue >= 1 && paramValue <= 45) {
                     config_servo_Inc = paramValue
                     servoArm_Increment_Degrees_Int = config_servo_Inc
-                    settingsOverride_FlashMem_Save_Func()
+                    // // jwc 26-0518-1600 Deactivate as expeimentally working, but not ready for final: settingsOverride_FlashMem_Save_Func()
                     serial.writeLine("* CFG OK: servoInc=" + config_servo_Inc)
                     return true
                 }
@@ -1392,7 +1392,6 @@ function setup_Code_For_System_Func () {
     if (true) {
         setup_System_Variables_1__UserCustomizable_Not__Func()
         setup_System_Variables_2__UserCustomizable_Yes__Func()
-        settingsOverride_FlashMem_Load_Func()
         setup_Network_Func()
 setup_BotAndController_Func()
     }
@@ -1652,7 +1651,7 @@ quest_Note_2.quest_Show_String_For_Note_Big_Func(
 quest_Note_2.quest_Show_String_For_Note_Small_Func(
 "... Range [21-255], Default = 1"
 )
-network_GroupChannel_MyBotAndController_Base0_Int = 99
+network_GroupChannel_MyBotAndController_Base0_Int = 1
 quest_Note_1.quest_Show_String_For_Note_Big_Func(
 "Below, Setup Code for Student:"
 )
@@ -2019,7 +2018,7 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
-    _system_Github_VER_STRING = "v0.6.1"
+    _system_Github_VER_STRING = "v0.6.2"
     quest_Note_1.quest_Show_String_For_Note_Small_Func(
     "©️ 2026 Quest Institute. All rights reserved."
     )
@@ -2161,124 +2160,6 @@ basic.forever(function () {
         quest_Note_6.quest_Show_String_For_Note_Big_Func(
         "Level 2.1: Variables_n_Constants_Yes"
         )
-    }
-})
-basic.forever(function () {
-    quest_Note_3.quest_Show_String_For_Note_Big_Func(
-    "Network-Cycle Management Stack"
-    )
-    if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Controller_Joystick__ID_INT) {
-        quest_Note_5.quest_Show_String_For_Note_Small_Func(
-        "/\\ Controller-Only to Avoid Premature Auto-Pair"
-        )
-        if (false) {
-            serial.writeString("*** A1:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            controller__Polar_OriginAtCenter__MagnitudePixel__Int,
-            8,
-            2
-            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            controller__Polar_OriginAtCenter__IdleCount_Int,
-            8,
-            2
-            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int,
-            8,
-            2
-            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT,
-            8,
-            2
-            ) + "|")
-        }
-        if (false) {
-            serial.writeLine("*** A2: " + "Joy_X:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            joystickbit.getRockerValue(joystickbit.rockerType.X),
-            8,
-            2
-            ) + " Joy_Y:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            joystickbit.getRockerValue(joystickbit.rockerType.Y),
-            8,
-            2
-            ))
-        }
-        if (true) {
-            network__CpuCycle_Post__Management_Func()
-quest_Note_4.quest_Show_String_For_Note_Small_Func(
-            "See if this will slow down to column-align serial-prints"
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "See if this will slow down to column-align serial-prints"
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "20ms (min standard), 100ms, 10000ms (noticably slower, 1sec, but no help)"
-            )
-            quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(20, quest_Time_Units_Enum.Milliseconds)
-            if (false) {
-                quest_Note_5.quest_Show_String_For_Note_Small_Func(
-                "TEMP FIX \\/\\/"
-                )
-                serial.writeLine("* 26-0118-0600:" + controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + botModeInIdle_Fn())
-            }
-        }
-        if (botModeInIdle_Fn()) {
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "Avoid sending 'stop' to not interfere.. "
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "..turbo-max-motion & other user-inputs pressed"
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "Avoid sending 'stop' after above threshold-max,.."
-            )
-            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-            "..to not flood Led-5x5 and Network"
-            )
-            if (false) {
-                quest_Note_5.quest_Show_String_For_Note_Small_Func(
-                "TEMP FIX \\/\\/"
-                )
-                serial.writeLine("* 26-0118-0601:" + controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + botModeInIdle_Fn())
-            }
-            if (controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int == 0) {
-                if (true) {
-                    images.createImage(`
-                        . . . . .
-                        . . . . .
-                        . . # . .
-                        . . . . .
-                        . . . . .
-                        `).showImage(0, 0)
-                    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                    "Zero values if not exceed 'Deadzone_AsIdle'"
-                    )
-                    radio.sendString("stop")
-                    controller__Polar_OriginAtCenter__IdleCount_Int = 0
-                    controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int += controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
-                    serial.writeLine("*** B: STOP" + "")
-                }
-            }
-            controller__Polar_OriginAtCenter__IdleCount_Int += 1
-            if (false) {
-                controller__Polar_OriginAtCenter__IdleCount_Int = 0
-                if (controller__Polar_OriginAtCenter__IdleCount_Int % 5 == 0) {
-                    if (true) {
-                        images.createImage(`
-                            . . . . .
-                            . . . . .
-                            . . # . .
-                            . . . . .
-                            . . . . .
-                            `).showImage(0, 0)
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "Zero values if not exceed 'Deadzone_AsIdle'"
-                        )
-                        radio.sendString("stop")
-                        controller__Polar_OriginAtCenter__IdleCount_Int = 0
-                        serial.writeString("*** B: STOP" + "")
-                    }
-                }
-            }
-        }
     }
 })
 basic.forever(function () {
@@ -2484,6 +2365,124 @@ basic.forever(function () {
                 "Just exited the above_conditioned 'if then' state and will process accordingly as needed:"
                 )
                 _system_Sw_ModeState__Now__Id_Int = _system_Sw_ModeState__Run__AndShow_01_DeviceType__ID_INT
+            }
+        }
+    }
+})
+basic.forever(function () {
+    quest_Note_3.quest_Show_String_For_Note_Big_Func(
+    "Network-Cycle Management Stack"
+    )
+    if (_system_Hw_DeviceType__Now__Id_Int == _system_Hw_DeviceType__Controller_Joystick__ID_INT) {
+        quest_Note_5.quest_Show_String_For_Note_Small_Func(
+        "/\\ Controller-Only to Avoid Premature Auto-Pair"
+        )
+        if (false) {
+            serial.writeString("*** A1:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            controller__Polar_OriginAtCenter__MagnitudePixel__Int,
+            8,
+            2
+            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            controller__Polar_OriginAtCenter__IdleCount_Int,
+            8,
+            2
+            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int,
+            8,
+            2
+            ) + "|" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT,
+            8,
+            2
+            ) + "|")
+        }
+        if (false) {
+            serial.writeLine("*** A2: " + "Joy_X:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            joystickbit.getRockerValue(joystickbit.rockerType.X),
+            8,
+            2
+            ) + " Joy_Y:" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+            joystickbit.getRockerValue(joystickbit.rockerType.Y),
+            8,
+            2
+            ))
+        }
+        if (true) {
+            network__CpuCycle_Post__Management_Func()
+quest_Note_4.quest_Show_String_For_Note_Small_Func(
+            "See if this will slow down to column-align serial-prints"
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "See if this will slow down to column-align serial-prints"
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "20ms (min standard), 100ms, 10000ms (noticably slower, 1sec, but no help)"
+            )
+            quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(20, quest_Time_Units_Enum.Milliseconds)
+            if (false) {
+                quest_Note_5.quest_Show_String_For_Note_Small_Func(
+                "TEMP FIX \\/\\/"
+                )
+                serial.writeLine("* 26-0118-0600:" + controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + botModeInIdle_Fn())
+            }
+        }
+        if (botModeInIdle_Fn()) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "Avoid sending 'stop' to not interfere.. "
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "..turbo-max-motion & other user-inputs pressed"
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "Avoid sending 'stop' after above threshold-max,.."
+            )
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "..to not flood Led-5x5 and Network"
+            )
+            if (false) {
+                quest_Note_5.quest_Show_String_For_Note_Small_Func(
+                "TEMP FIX \\/\\/"
+                )
+                serial.writeLine("* 26-0118-0601:" + controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_Int + "|" + controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int + "|" + botModeInIdle_Fn())
+            }
+            if (controller__Polar_OriginAtCenter__IdleCount_Int % controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int == 0) {
+                if (true) {
+                    images.createImage(`
+                        . . . . .
+                        . . . . .
+                        . . # . .
+                        . . . . .
+                        . . . . .
+                        `).showImage(0, 0)
+                    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                    "Zero values if not exceed 'Deadzone_AsIdle'"
+                    )
+                    radio.sendString("stop")
+                    controller__Polar_OriginAtCenter__IdleCount_Int = 0
+                    controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_Now_Int += controller__Polar_OriginAtCenter__IdleCount_ModulusNetworkThrottle_ADD_INT
+                    serial.writeLine("*** B: STOP" + "")
+                }
+            }
+            controller__Polar_OriginAtCenter__IdleCount_Int += 1
+            if (false) {
+                controller__Polar_OriginAtCenter__IdleCount_Int = 0
+                if (controller__Polar_OriginAtCenter__IdleCount_Int % 5 == 0) {
+                    if (true) {
+                        images.createImage(`
+                            . . . . .
+                            . . . . .
+                            . . # . .
+                            . . . . .
+                            . . . . .
+                            `).showImage(0, 0)
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "Zero values if not exceed 'Deadzone_AsIdle'"
+                        )
+                        radio.sendString("stop")
+                        controller__Polar_OriginAtCenter__IdleCount_Int = 0
+                        serial.writeString("*** B: STOP" + "")
+                    }
+                }
             }
         }
     }
